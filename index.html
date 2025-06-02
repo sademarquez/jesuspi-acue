@@ -23,6 +23,8 @@
     <link rel="preload" href="css/main.min.css" as="style">
     <link rel="stylesheet" href="css/main.min.css">
     
+    <script src="https://cdn.tailwindcss.com"></script> 
+
     <link rel="preload" href="js/main.min.js" as="script">
 </head>
 <body class="bg-soft-cream text-deep-charcoal font-inter">
@@ -54,7 +56,8 @@
     </header>
 
     <main>
-        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('images/hero-bg.jpg');"> <div class="absolute inset-0 bg-dark-charcoal opacity-60"></div>
+        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white section-animated">
+            <div class="absolute inset-0 bg-dark-charcoal opacity-60"></div>
             <div class="relative z-10 text-center px-6">
                 <h1 class="text-4xl md:text-6xl font-bold text-shadow animate-fade-in-up">Jesús Piñacué Achicué</h1>
                 <p class="mt-4 text-xl md:text-2xl text-shadow animate-fade-in-up delay-200">Líder Indígena, Político y Defensor Intercultural.</p>
@@ -82,13 +85,13 @@
             <div class="container mx-auto max-w-6xl">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-dark-gold">Momentos Clave</h2>
                 
-                <div class="relative w-full overflow-hidden mb-12">
-                    <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
+                <div class="relative w-full overflow-hidden mb-12 rounded-lg shadow-lg">
+                    <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out h-96 md:h-[500px]">
                         </div>
-                    <button id="prevBtn" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-20">
+                    <button id="carousel-prev" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-20">
                         <svg class="w-6 h-6 text-dark-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                     </button>
-                    <button id="nextBtn" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-20">
+                    <button id="carousel-next" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-20">
                         <svg class="w-6 h-6 text-dark-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </button>
                     <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
