@@ -18,181 +18,268 @@ body {
     overflow-x: hidden; /* Previene el scroll horizontal no deseado */
 }
 
+/* Para prevenir el scroll cuando el menú móvil está abierto */
+body.overflow-hidden {
+    overflow: hidden;
+}
+
 /* Clases de Tailwind redefinidas para usar variables CSS (si compilas Tailwind) */
-/* Si no compilas Tailwind, estas clases no son necesarias aquí, ya las maneja Tailwind */
 .bg-soft-cream { background-color: var(--color-soft-cream); }
 .text-deep-charcoal { color: var(--color-deep-charcoal); }
 .text-dark-gold { color: var(--color-dark-gold); }
 .bg-dark-gold { background-color: var(--color-dark-gold); }
 .hover\:bg-muted-gold:hover { background-color: var(--color-muted-gold); }
+.text-muted-gold { color: var(--color-muted-gold); }
 .bg-light-gray { background-color: var(--color-light-gray); }
 
-
-/* Estilos para el HEADER */
-.header-scrolled {
-    background-color: rgba(255, 255, 255, 0.95); /* Fondo ligeramente transparente cuando se hace scroll */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+/* Estilos para el encabezado principal */
+#main-header {
+    background-color: var(--color-soft-cream); /* Fondo por defecto */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra sutil */
 }
 
-/* Estilos para la sección HERO (Inicio) */
-#hero {
-    min-height: 80vh; /* Ocupa al menos el 80% de la altura de la ventana */
+.header-scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo ligeramente transparente cuando se hace scroll */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque más fuerte */
+}
+
+/* Estilos para los enlaces de navegación en escritorio */
+header nav .nav-link { /* Mayor especificidad para asegurar el color */
+    position: relative;
+    color: var(--color-deep-charcoal); /* Color base de las letras es negro (Deep Charcoal) */
+    font-weight: 600;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease-in-out;
+}
+
+header nav .nav-link:hover {
+    color: var(--color-dark-gold); /* Al pasar el ratón, cambian a dorado */
+}
+
+/* Subrayado animado para enlaces de navegación */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-dark-gold);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after { /* `active` class is added by JS for current section */
+    width: 100%;
+}
+
+/* Estilos del botón del menú hamburguesa */
+#mobile-menu-button {
     display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
-    justify-content: center; /* Centra horizontalmente el contenido */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 60; /* Asegura que esté por encima del menú móvil */
+}
+
+#mobile-menu-button span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-deep-charcoal);
+    border-radius: 9999px;
+    transition: all 0.3s ease-in-out;
+    transform-origin: 1px;
+}
+
+#mobile-menu-button.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    background-color: var(--color-soft-cream); /* Cambia a blanco/crema en modo activo */
+}
+
+#mobile-menu-button.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+#mobile-menu-button.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    background-color: var(--color-soft-cream); /* Cambia a blanco/crema en modo activo */
+}
+
+/* Estilos para el menú móvil */
+#mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%; /* Ocupa todo el ancho en móvil */
+    height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+    background-color: var(--color-deep-charcoal);
+    color: var(--color-soft-cream);
+    padding: 6rem 1rem 1rem;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%); /* Oculto por defecto (fuera de la pantalla) */
+    transition: transform 0.3s ease-out; /* Transición suave al aparecer/desaparecer */
+}
+
+#mobile-menu.active {
+    transform: translateX(0); /* Visible (se desliza hacia la pantalla) */
+}
+
+#mobile-menu a {
+    color: var(--color-soft-cream); /* Color base de los enlaces del menú móvil */
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    display: block;
+    width: 100%;
     text-align: center;
-    color: var(--color-soft-cream); /* Color de texto claro para el fondo */
-    position: relative; /* Necesario para el overlay y z-index */
-    padding: 4rem 1rem; /* Padding para espacio */
+    text-decoration: none;
+    transition: color 0.2s;
+}
 
-    /* --- IMAGEN DE FONDO: ASEGÚRATE QUE 'hero-background.jpg' EXISTA EN 'images/' --- */
-    background-image: url('../images/hero-background.jpg'); 
-    background-size: cover; /* La imagen cubrirá todo el espacio */
-    background-position: center; /* La imagen se centrará */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-attachment: fixed; /* Efecto de paralaje sutil */
+#mobile-menu a:hover {
+    color: var(--color-dark-gold); /* Color al pasar el ratón en el menú móvil */
+}
 
-    /* Overlay oscuro para mejorar la legibilidad del texto sobre la imagen */
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.4); /* Capa semi-transparente oscura */
-        z-index: 1; /* Asegura que esté por debajo del contenido */
+/* Ocultar el menú móvil en pantallas grandes */
+@media (min-width: 768px) { /* md breakpoint */
+    #mobile-menu {
+        display: none !important; /* Asegura que el menú móvil esté oculto en desktop */
     }
 }
 
-/* Asegura que el contenido del hero esté por encima del overlay */
-#hero .container {
-    position: relative;
-    z-index: 2; /* Mayor que el z-index del overlay */
+/* Estilos de sección genéricos */
+.section-animated {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* Ajustes de color para el texto y botones del hero */
-#hero h1,
-#hero p {
-    color: var(--color-soft-cream);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para mejor contraste */
+.section-animated.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-#hero .button-primary {
-    background-color: var(--color-dark-gold);
-    color: var(--color-deep-charcoal);
-    border: none;
+/* Estilos para el Hero Section */
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-#hero .button-primary:hover {
-    background-color: var(--color-muted-gold);
+@keyframes fadeInUpp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-#hero .button-secondary {
-    background-color: transparent;
-    border: 2px solid var(--color-soft-cream);
-    color: var(--color-soft-cream);
-}
-#hero .button-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.animate-fade-in-up {
+    animation: fadeInUpp 1s ease-out forwards;
+    opacity: 0; /* Asegura que no sea visible antes de la animación */
 }
 
+.animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
+.animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
 
-/* Estilos para el carrusel (Trayectoria) */
+/* Estilos específicos para la sección Biografía */
+.biografia-img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la línea de tiempo (Trayectoria) */
 #trayectoria {
-    position: relative; /* Para posicionar los botones de navegación */
-    padding: 4rem 0; /* Padding general de la sección */
-    overflow: hidden; /* Esto es importante para ocultar los slides fuera de la vista y el scrollbar */
-    background-color: var(--color-light-gray); /* Añade un fondo sutil a la sección */
+    position: relative;
+    padding: 4rem 0;
+    overflow: hidden;
+    background-color: var(--color-light-gray);
 }
 
 #carousel-track {
     display: flex;
-    overflow-x: scroll; /* Cambiado a 'scroll' para que el snap funcione, pero ocultaremos la barra */
-    -ms-overflow-style: none;  /* Para Internet Explorer y Edge */
-    scrollbar-width: none;  /* Para Firefox */
-    scroll-behavior: smooth; /* Desplazamiento suave al cambiar de slide */
-    scroll-snap-type: x mandatory; /* Fuerza el 'snap' a cada slide */
-    -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
-    padding-bottom: 2rem; /* Espacio para los puntos de navegación */
-    /* Añadido: padding horizontal para crear el "marco" y espaciado en móviles también */
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-/* Ocultar scrollbar para #carousel-track en navegadores WebKit (Chrome, Safari) */
-#carousel-track::-webkit-scrollbar {
-    display: none;
+    overflow-x: hidden; /* Hide scrollbar, JS handles movement */
+    scroll-behavior: smooth;
+    padding-bottom: 2rem;
+    /* No padding-left/right here, let slides handle it */
 }
 
 .carousel-slide {
-    flex: 0 0 100%; /* Cada slide ocupa el 100% del ancho del contenedor en móvil */
-    scroll-snap-align: center; /* El slide se alinea al centro al hacer scroll-snap */
-    /* Estilos del slide para encapsulado en móviles */
-    max-width: calc(100% - 2rem); /* Limita el ancho del slide para tener un margen lateral en móviles */
-    margin: 0 1rem; /* Margen de 1rem a cada lado del slide (total 2rem entre slides) */
-    padding: 1rem;
-    background-color: var(--color-soft-cream);
-    border-radius: 0.5rem; /* rounded-lg en Tailwind */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg en Tailwind */
-    text-align: center;
-    transition: transform 0.3s ease-in-out; /* Transición para efectos de hover si se añaden */
+    flex-shrink: 0;
+    width: 100%; /* Default to full width on mobile */
+    height: 100%; /* Take full height of track */
+    position: relative; /* For content overlay */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* More prominent shadow */
+    transition: transform 0.7s ease-in-out; /* Smooth transition for JS movement */
 }
 
 .carousel-slide img {
     width: 100%;
-    height: 12rem; /* h-48 en Tailwind */
+    height: 100%; /* Fill the slide */
     object-fit: cover;
-    border-radius: 0.375rem; /* rounded-md en Tailwind */
-    margin-bottom: 1rem;
 }
 
-.carousel-slide h3 {
-    font-size: 1.25rem; /* text-xl en Tailwind */
-    font-weight: 600; /* font-semibold en Tailwind */
-    color: var(--color-deep-charcoal);
-    margin-bottom: 0.5rem;
+.carousel-slide .absolute { /* Styles for the text overlay */
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    color: white;
 }
 
-.carousel-slide p {
-    color: var(--color-deep-charcoal);
-    margin-bottom: 0.5rem;
+/* Responsive adjustments for Trayectoria carousel */
+@media (min-width: 768px) { /* md breakpoint */
+    #carousel-track {
+        padding: 0 2rem; /* Add padding to track on larger screens */
+    }
+    .carousel-slide {
+        width: calc(50% - 1.5rem); /* Show 2 slides, with 1.5rem gap */
+        margin: 0 0.75rem; /* Half gap on each side */
+    }
 }
 
-.carousel-slide .text-dark-gold {
-    font-weight: 700; /* font-bold en Tailwind */
+@media (min-width: 1024px) { /* lg breakpoint */
+    .carousel-slide {
+        width: calc(33.333% - 1.5rem); /* Show 3 slides, with 1.5rem gap */
+        margin: 0 0.75rem;
+    }
 }
 
-/* Estilos para los botones de navegación del carrusel */
+/* Navigation buttons for Trayectoria carousel */
 #carousel-prev, #carousel-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 20;
-    background-color: rgba(255, 255, 255, 0.7); /* Ligeramente transparente */
-    padding: 0.75rem; /* Más grandes para móviles */
-    border-radius: 9999px; /* Completamente redondo */
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.75rem;
+    border-radius: 9999px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: background-color 0.2s;
-    border: none; /* Eliminar borde por defecto del botón */
+    border: none;
     cursor: pointer;
-    /* Icono dentro del botón (puedes usar SVG o font icon) */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem; /* Tamaño del icono */
-    color: var(--color-deep-charcoal); /* Color del icono */
+    font-size: 1.5rem;
+    color: var(--color-deep-charcoal);
 }
 
 #carousel-prev:hover, #carousel-next:hover {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-#carousel-prev { left: 0.5rem; } /* Más cerca del borde para hacer espacio */
-#carousel-next { right: 0.5rem; } /* Más cerca del borde para hacer espacio */
+#carousel-prev { left: 0.5rem; }
+#carousel-next { right: 0.5rem; }
 
-/* Puntos de navegación del carrusel */
+/* Dots for Trayectoria carousel */
 #carousel-dots {
     position: absolute;
     bottom: 1rem;
@@ -203,76 +290,156 @@ body {
     z-index: 20;
 }
 
-#carousel-dots button {
-    width: 0.75rem; /* Más grandes */
-    height: 0.75rem; /* Más grandes */
-    border-radius: 9999px; /* Completamente redondo */
+#carousel-dots .carousel-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
     background-color: var(--color-dark-gold);
     opacity: 0.5;
     transition: opacity 0.3s;
-    border: none; /* Eliminar borde por defecto del botón */
+    border: none;
     cursor: pointer;
 }
 
-#carousel-dots button.opacity-100 { /* Clase para el punto activo */
+#carousel-dots .carousel-dot.bg-white { /* Active dot */
     opacity: 1;
+    background-color: white;
 }
 
-
-/* Estilos para la sección de Biografía y Pensamiento */
-.section-content {
-    background-color: var(--color-light-gray);
-    padding: 4rem 2rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+/* Estilos para la sección Pensamiento y Acción */
+#pensamiento-accion {
+    padding: 4rem 0;
+    background-color: var(--color-soft-cream);
 }
 
-/* Estilos para la cuadrícula de contenido filtrable */
-#content-grid {
-    display: grid;
-    gap: 1.5rem; /* Espacio entre los elementos de la cuadrícula */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+#content-carousel-track {
+    display: flex;
+    overflow-x: hidden; /* Hide scrollbar, JS handles movement */
+    scroll-behavior: smooth;
+    padding: 0 2rem; /* Padding for the track to show partial next/prev slides */
+    box-sizing: border-box;
+}
+
+.content-carousel-slide {
+    flex-shrink: 0;
+    width: 100%; /* Default to full width on mobile */
+    padding: 1rem; /* Padding around the content item */
+    box-sizing: border-box;
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
 }
 
 .content-item {
     background-color: var(--color-soft-cream);
     border-radius: 0.5rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    overflow: hidden; /* Para que la imagen no se salga */
-    transition: transform 0.2s ease-in-out;
-}
-
-.content-item:hover {
-    transform: translateY(-5px); /* Efecto hover sutil */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Soft shadow */
+    overflow: hidden;
+    height: 100%; /* Fill the slide container */
+    display: flex;
+    flex-direction: column;
 }
 
 .content-item img {
     width: 100%;
-    height: 12rem; /* Altura fija para las imágenes del contenido */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 0.5rem 0.5rem 0 0; /* Rounded top corners */
 }
 
 .content-item-body {
-    padding: 1rem;
+    padding: 1.5rem;
+    flex-grow: 1; /* Allows content to take available space */
+    display: flex;
+    flex-direction: column;
 }
 
 .content-item-body h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-deep-charcoal);
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem; /* Larger title */
+    font-weight: 700; /* Bolder title */
+    color: var(--color-dark-gold); /* Dorado */
+    margin-bottom: 0.75rem;
 }
 
 .content-item-body p {
-    font-size: 0.875rem;
-    color: var(--color-deep-charcoal);
+    font-size: 1rem;
+    color: var(--color-muted-gold); /* Dorado opaco */
+    line-height: 1.6;
+    flex-grow: 1; /* Allows description to take available space */
     margin-bottom: 1rem;
 }
 
-.content-item-body .text-dark-gold {
-    font-size: 0.875rem;
-    font-weight: 700;
+.content-item-body a {
+    align-self: flex-start; /* Aligns button to the start */
 }
+
+/* Responsive adjustments for Pensamiento y Acción carousel */
+@media (min-width: 768px) { /* md breakpoint */
+    .content-carousel-slide {
+        width: calc(50% - 2rem); /* Show 2 slides with 2rem gap */
+        margin: 0 1rem; /* Half gap on each side */
+    }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .content-carousel-slide {
+        width: calc(33.333% - 2rem); /* Show 3 slides with 2rem gap */
+        margin: 0 1rem;
+    }
+}
+
+/* Navigation buttons for Pensamiento y Acción carousel */
+#content-carousel-prev, #content-carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.75rem;
+    border-radius: 9999px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-deep-charcoal);
+}
+
+#content-carousel-prev:hover, #content-carousel-next:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#content-carousel-prev { left: 0.5rem; }
+#content-carousel-next { right: 0.5rem; }
+
+/* Dots for Pensamiento y Acción carousel */
+#content-carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+#content-carousel-dots .carousel-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    background-color: var(--color-dark-gold);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+#content-carousel-dots .carousel-dot.bg-white { /* Active dot */
+    opacity: 1;
+    background-color: white;
+}
+
 
 /* Estilos para el FOOTER */
 footer {
@@ -325,60 +492,60 @@ footer a:hover {
     color: var(--color-soft-cream);
 }
 
+/* Nuevos estilos para los botones de filtro de contenido */
+.filter-btn {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
 
-/* Estilos para el menú móvil */
-#mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--color-deep-charcoal);
-    color: var(--color-soft-cream);
-    padding: 6rem 1rem 1rem;
-    z-index: 50;
+.filter-btn:hover {
+    transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+}
+
+/* Estilos para la línea de tiempo (timeline) - Estáticos, si no se usan en JS */
+.timeline-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    transform: translateX(100%); /* Oculto por defecto (fuera de la pantalla) */
-    transition: transform 0.3s ease-out; /* Transición suave al aparecer/desaparecer */
+    position: relative;
 }
 
-#mobile-menu.active {
-    transform: translateX(0); /* Visible (se desliza hacia la pantalla) */
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-dark-gold);
+    border-radius: 50%;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid var(--color-light-gray);
+    box-shadow: 0 0 0 4px var(--color-dark-gold); /* Anillo exterior */
 }
 
-#mobile-menu a {
-    color: var(--color-soft-cream);
-    font-size: 1.5rem;
-    padding: 1rem 0;
-    display: block;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-#mobile-menu a:hover {
-    color: var(--color-dark-gold);
-}
-
-/* Ocultar el botón del menú burger y mostrar la navegación normal en pantallas grandes */
-@media (min-width: 768px) {
-    #mobile-menu-button {
-        display: none; /* Oculta el botón del menú burger en desktop */
+/* Ajustes para la línea de tiempo en móviles */
+@media (max-width: 767px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-left: 2px solid var(--color-dark-gold); /* Línea vertical en móvil */
+        padding-left: 1rem;
+        margin-left: 1rem;
     }
-    #mobile-menu {
-        position: static;
-        transform: translateX(0);
-        width: auto;
-        height: auto;
-        background-color: transparent;
-        color: inherit;
+
+    .timeline-item .timeline-dot {
+        left: -8px; /* Posiciona el punto en la línea vertical */
+        transform: none;
+        top: 0;
+    }
+
+    .timeline-item > div {
+        width: 100%;
         padding: 0;
-        z-index: auto;
-        flex-direction: row;
-        display: flex !important; /* Asegura que esté visible en desktop */
+        margin-bottom: 1rem;
+    }
+
+    .timeline-item img {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
