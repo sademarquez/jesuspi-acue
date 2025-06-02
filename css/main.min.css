@@ -22,7 +22,7 @@ body {
 .bg-dark-gold { background-color: var(--color-dark-gold); }
 .hover\:bg-muted-gold:hover { background-color: var(--color-muted-gold); }
 .bg-light-gray { background-color: var(--color-light-gray); }
-.bg-dark-charcoal { background-color: rgba(74, 68, 65, 1); /* Direct use of deep charcoal */ }
+.bg-dark-charcoal { background-color: rgba(74, 68, 65, 1); /* Direct use of deep charcoal */ } /* Añadido */
 
 
 /* Efecto de sombra para texto en banners/imágenes */
