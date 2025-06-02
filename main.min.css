@@ -1,347 +1,546 @@
-/* Reset y configuración base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Variables CSS para consistencia (Basado en Justicia y Dignidad) */
+/* Variables CSS para una gestión de colores más sencilla y consistente */
 :root {
-    --primary-red: #8b0000; /* Rojo oscuro principal */
-    --secondary-red: #dc143c; /* Rojo más brillante/activo */
-    --deep-charcoal: #333333; /* Negro/Gris muy oscuro para texto */
-    --light-gray-bg: #f8f8f8; /* Fondo de sección claro */
-    --white: #fff; /* Blanco puro */
-    --soft-cream: #fbf8f0; /* Color original de tu página, mantenido para algunas áreas sutiles */
-    --transition-speed: all 0.3s ease; /* Velocidad de transición general */
-    --gradient-overlay: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, var(--primary-red) 40%, rgba(0,0,0,0.8) 100%);
+    --color-soft-cream: #FBF8F0; /* Soft Cream */
+    --color-deep-charcoal: #4A4441; /* Deep Charcoal */
+    --color-dark-gold: #D4AF37; /* Muted Gold */
+    --color-muted-gold: #E0DCD4; /* Lighter Gold for backgrounds/hover */
+    --color-light-gray: #f8f8f8; /* Un gris claro para secciones de fondo */
+    --color-accent-blue: #007bff; /* Nuevo color de acento, puedes ajustarlo */
 }
 
+/* Reset básico y estilos generales del cuerpo */
 body {
-    font-family: 'Georgia', serif; /* Fuente principal */
-    line-height: 1.6;
-    color: var(--deep-charcoal);
-    background-color: var(--light-gray-bg);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-soft-cream);
+    color: var(--color-deep-charcoal);
+    line-height: 1.6; /* Mejora la legibilidad */
+    margin: 0; /* Asegura que no haya margen por defecto en el body */
+    padding: 0; /* Asegura que no haya padding por defecto en el body */
+    overflow-x: hidden; /* Previene el scroll horizontal no deseado */
 }
 
-/* --- Tipografía Jerárquica (Adaptada de la guía) --- */
-h1, .hero-title-style {
-    font-family: 'Georgia', serif;
-    font-size: 3.5rem; /* Ajustado para pantallas grandes */
-    font-weight: bold;
-    color: var(--white); /* Para el héroe */
-    margin-bottom: 0.5rem;
-}
-h2, .section-title {
-    font-family: 'Georgia', serif;
-    font-size: 2.5rem; /* Ajustado para pantallas grandes */
-    color: var(--primary-red);
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-h3, .article-title, .contact-card-title {
-    font-family: 'Georgia', serif;
-    font-size: 1.8rem;
-    color: var(--primary-red);
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-p, .section-paragraph, .contact-info-text, .hero-subtitle-style {
-    font-family: 'Inter', sans-serif; /* Usar Inter para el cuerpo del texto para legibilidad */
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--deep-charcoal);
-}
-/* Asegura que el texto del hero sea blanco */
-.hero-subtitle-style {
-    color: var(--white);
+/* Clases de Tailwind redefinidas para usar variables CSS (si compilas Tailwind) */
+/* Si no compilas Tailwind, estas clases no son necesarias aquí, ya las maneja Tailwind */
+.bg-soft-cream { background-color: var(--color-soft-cream); }
+.text-deep-charcoal { color: var(--color-deep-charcoal); }
+.text-dark-gold { color: var(--color-dark-gold); }
+.bg-dark-gold { background-color: var(--color-dark-gold); }
+.hover\:bg-muted-gold:hover { background-color: var(--color-muted-gold); }
+.bg-light-gray { background-color: var(--color-light-gray); }
+
+
+/* Estilos para el HEADER */
+#main-header {
+    background-color: var(--color-soft-cream); /* Fondo por defecto */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
 }
 
-/* --- Estilos Generales de Contenedores y Secciones --- */
-.container {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 20px;
-}
-.section-style {
-    padding: 60px 0;
-    background-color: var(--light-gray-bg);
-}
-/* Alternar color de fondo para las secciones para contraste */
-#pensamiento, #contacto {
-    background-color: var(--white);
+.header-scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo ligeramente transparente cuando se hace scroll */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque más fuerte */
 }
 
-/* --- Header y Navegación --- */
-.header-style {
-    background: rgba(0,0,0,0.9); /* Fondo oscuro semitransparente */
-    backdrop-filter: blur(10px); /* Efecto de desenfoque */
-    padding: 15px 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más pronunciada */
-    transition: var(--transition-speed);
-}
-.header-logo-text {
-    color: var(--white);
-}
-.header-logo-text:hover {
-    color: var(--secondary-red);
+/* Estilos para los enlaces de navegación */
+.nav-link {
+    position: relative; /* Para el subrayado animado */
+    color: var(--color-deep-charcoal);
+    font-weight: 600; /* Un poco más de peso */
+    padding: 0.5rem 0; /* Espaciado vertical */
+    transition: color 0.2s ease-in-out;
 }
 
-/* Navegación de Escritorio */
-.nav-desktop-link {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.1rem;
-    position: relative;
-    padding-bottom: 5px; /* Espacio para el subrayado */
+.nav-link:hover {
+    color: var(--color-dark-gold);
 }
-.nav-desktop-link::after {
+
+/* Subrayado animado para enlaces de navegación */
+.nav-link::after {
     content: '';
     position: absolute;
-    left: 0;
     bottom: 0;
+    left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--secondary-red);
+    background-color: var(--color-dark-gold);
     transition: width 0.3s ease-in-out;
 }
-.nav-desktop-link:hover::after,
-.nav-desktop-link.active::after {
+
+.nav-link:hover::after,
+.nav-link.text-dark-gold::after { /* Clase para el enlace activo */
     width: 100%;
 }
-.nav-desktop-link.active {
-    color: var(--secondary-red); /* Color para el link activo en escritorio */
+
+
+/* Estilos para el botón de menú hamburguesa */
+#mobile-menu-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
+    z-index: 60; /* Asegura que esté por encima del menú móvil */
 }
 
-/* Botón del Menú Móvil */
-.mobile-menu-button {
-    color: var(--white);
+#mobile-menu-button span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-deep-charcoal);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Menú Móvil Desplegable */
+/* Animación del icono de hamburguesa a cruz */
+#mobile-menu-button.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+#mobile-menu-button.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#mobile-menu-button.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* Estilos para el menú móvil */
 #mobile-menu {
-    background: var(--deep-charcoal); /* Fondo oscuro */
-    color: var(--white);
-    transform: translateX(100%);
-    transition: transform 0.3s ease-out;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%; /* Ocupa el 80% del ancho en móvil */
+    max-width: 350px; /* Limita el ancho máximo del menú */
+    height: 100vh;
+    background-color: var(--color-deep-charcoal);
+    color: var(--color-soft-cream);
+    padding: 6rem 1rem 1rem;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%); /* Oculto por defecto (fuera de la pantalla) */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transición más fluida */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3); /* Sombra para efecto de cajón */
 }
+
 #mobile-menu.active {
-    transform: translateX(0);
+    transform: translateX(0); /* Visible (se desliza hacia la pantalla) */
 }
-.nav-mobile-link {
-    color: var(--white);
+
+#mobile-menu a {
+    color: var(--color-soft-cream);
+    font-size: 1.8rem; /* Un poco más grande para mejor usabilidad táctil */
     padding: 1rem 0;
-    font-size: 1.5rem;
     display: block;
     width: 100%;
     text-align: center;
     text-decoration: none;
-    transition: var(--transition-speed);
-}
-.nav-mobile-link:hover {
-    color: var(--secondary-red);
-}
-.nav-mobile-link.active {
-    color: var(--secondary-red); /* Color para el link activo en móvil */
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    border-radius: 0.375rem; /* Bordes redondeados */
 }
 
-/* --- Hero Section --- */
-.hero-section-style {
-    height: 70vh; /* Altura similar al ejemplo */
-    background-size: cover;
-    background-position: center;
-}
-.hero-overlay-gradient {
-    background: var(--gradient-overlay); /* Gradiente rojo-negro */
-}
-.hero-profile-img {
-    border-color: var(--primary-red); /* Borde de la imagen de perfil */
+#mobile-menu a:hover {
+    color: var(--color-dark-gold);
+    background-color: rgba(255, 255, 255, 0.08); /* Fondo sutil al pasar el ratón/tocar */
 }
 
-/* --- Botones --- */
-.button {
+/* Ocultar el botón del menú burger y mostrar la navegación normal en pantallas grandes */
+@media (min-width: 768px) {
+    #mobile-menu-button {
+        display: none; /* Oculta el botón del menú burger en desktop */
+    }
+    #mobile-menu {
+        position: static;
+        transform: translateX(0);
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        color: inherit;
+        padding: 0;
+        z-index: auto;
+        flex-direction: row;
+        display: flex !important; /* Asegura que esté visible en desktop */
+        box-shadow: none; /* Elimina la sombra en desktop */
+    }
+
+    #mobile-menu a {
+        font-size: 1rem; /* Vuelve al tamaño normal en desktop */
+        padding: 0.5rem 0;
+        background-color: transparent;
+    }
+}
+
+
+/* Estilos para la sección HERO (Inicio) */
+#hero {
+    min-height: 80vh; /* Ocupa al menos el 80% de la altura de la ventana */
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    text-align: center;
+    color: var(--color-soft-cream); /* Color de texto claro para el fondo */
+    position: relative; /* Necesario para el overlay y z-index */
+    padding: 4rem 1rem; /* Padding para espacio */
+
+    /* --- IMAGEN DE FONDO: ASEGÚRATE QUE 'hero-background.jpg' EXISTA EN 'images/' --- */
+    background-image: url('../images/hero-background.jpg'); 
+    background-size: cover; /* La imagen cubrirá todo el espacio */
+    background-position: center; /* La imagen se centrará */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Efecto de paralaje sutil */
+
+    /* Overlay oscuro para mejorar la legibilidad del texto sobre la imagen */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4); /* Capa semi-transparente oscura */
+        z-index: 1; /* Asegura que esté por debajo del contenido */
+    }
+}
+
+/* Asegura que el contenido del hero esté por encima del overlay */
+#hero .container {
+    position: relative;
+    z-index: 2; /* Mayor que el z-index del overlay */
+}
+
+/* Ajustes de color para el texto y botones del hero */
+#hero h1,
+#hero p {
+    color: var(--color-soft-cream);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para mejor contraste */
+}
+
+#hero .button-primary {
+    background-color: var(--color-dark-gold);
+    color: var(--color-deep-charcoal);
+    border: none;
+}
+
+#hero .button-primary:hover {
+    background-color: var(--color-muted-gold);
+}
+
+#hero .button-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-soft-cream);
+    color: var(--color-soft-cream);
+}
+#hero .button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Estilos para el carrusel (Trayectoria) */
+#trayectoria {
+    position: relative; /* Para posicionar los botones de navegación */
+    padding: 4rem 0; /* Padding general de la sección */
+    overflow: hidden; /* Esto es importante para ocultar los slides fuera de la vista y el scrollbar */
+    background-color: var(--color-light-gray); /* Añade un fondo sutil a la sección */
+}
+
+#carousel-track {
+    display: flex;
+    overflow-x: scroll; /* Cambiado a 'scroll' para que el snap funcione, pero ocultaremos la barra */
+    -ms-overflow-style: none;  /* Para Internet Explorer y Edge */
+    scrollbar-width: none;  /* Para Firefox */
+    scroll-behavior: smooth; /* Desplazamiento suave al cambiar de slide */
+    scroll-snap-type: x mandatory; /* Fuerza el 'snap' a cada slide */
+    -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
+    padding-bottom: 2rem; /* Espacio para los puntos de navegación */
+    /* Se eliminan los padding-left/right del track para que los márgenes de los slides lo manejen */
+    padding-left: 0; 
+    padding-right: 0;
+}
+
+/* Ocultar scrollbar para #carousel-track en navegadores WebKit (Chrome, Safari) */
+#carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-slide {
+    flex: 0 0 100%; /* Cada slide ocupa el 100% del ancho del contenedor en móvil */
+    scroll-snap-align: start; /* El slide se alinea al inicio al hacer scroll-snap */
+    /* Estilos del slide para encapsulado en móviles */
+    max-width: calc(100% - 2rem); /* Limita el ancho del slide para tener un margen lateral en móviles */
+    margin: 0 1rem; /* Margen de 1rem a cada lado del slide (total 2rem entre slides) */
+    padding: 1rem;
+    background-color: var(--color-soft-cream);
+    border-radius: 0.5rem; /* rounded-lg en Tailwind */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg en Tailwind */
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Transición para efectos de hover si se añaden */
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 12rem; /* h-48 en Tailwind */
+    object-fit: cover;
+    border-radius: 0.375rem; /* rounded-md en Tailwind */
+    margin-bottom: 1rem;
+}
+
+.carousel-slide h3 {
+    font-size: 1.25rem; /* text-xl en Tailwind */
+    font-weight: 600; /* font-semibold en Tailwind */
+    color: var(--color-deep-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.carousel-slide p {
+    color: var(--color-deep-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.carousel-slide .text-dark-gold {
+    font-weight: 700; /* font-bold en Tailwind */
+}
+
+/* Estilos para los botones de navegación del carrusel */
+#carousel-prev, #carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.7); /* Ligeramente transparente */
+    padding: 0.75rem; /* Más grandes para móviles */
+    border-radius: 9999px; /* Completamente redondo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.2s;
+    border: none; /* Eliminar borde por defecto del botón */
+    cursor: pointer;
+    /* Icono dentro del botón (puedes usar SVG o font icon) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Tamaño del icono */
+    color: var(--color-deep-charcoal); /* Color del icono */
+}
+
+#carousel-prev:hover, #carousel-next:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#carousel-prev { left: 0.5rem; } /* Más cerca del borde para hacer espacio */
+#carousel-next { right: 0.5rem; } /* Más cerca del borde para hacer espacio */
+
+/* Puntos de navegación del carrusel */
+#carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+#carousel-dots button {
+    width: 0.75rem; /* Más grandes */
+    height: 0.75rem; /* Más grandes */
+    border-radius: 9999px; /* Completamente redondo */
+    background-color: var(--color-dark-gold);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    border: none; /* Eliminar borde por defecto del botón */
+    cursor: pointer;
+}
+
+#carousel-dots button.opacity-100 { /* Clase para el punto activo */
+    opacity: 1;
+}
+
+
+/* Estilos para la sección de Biografía y Pensamiento */
+.section-content {
+    background-color: var(--color-light-gray);
+    padding: 4rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Estilos para la cuadrícula de contenido filtrable */
+#content-grid {
+    display: grid;
+    gap: 1.5rem; /* Espacio entre los elementos de la cuadrícula */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+}
+
+.content-item {
+    background-color: var(--color-soft-cream);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden; /* Para que la imagen no se salga */
+    transition: transform 0.2s ease-in-out;
+}
+
+.content-item:hover {
+    transform: translateY(-5px); /* Efecto hover sutil */
+}
+
+.content-item img {
+    width: 100%;
+    height: 12rem; /* Altura fija para las imágenes del contenido */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.content-item-body {
+    padding: 1rem;
+}
+
+/* CAMBIO: Títulos de contenido a dorado */
+.content-item-body h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-dark-gold); /* CAMBIO: Color a dorado */
+    margin-bottom: 0.5rem;
+}
+
+/* CAMBIO: Texto de contenido a dorado opaco */
+.content-item-body p {
+    font-size: 0.875rem;
+    color: var(--color-muted-gold); /* CAMBIO: Color a dorado opaco */
+    margin-bottom: 1rem;
+}
+
+.content-item-body .text-dark-gold {
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+/* Estilos para el FOOTER */
+footer {
+    background-color: var(--color-deep-charcoal);
+    color: var(--color-soft-cream);
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+footer a {
+    color: var(--color-dark-gold);
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: var(--color-soft-cream);
+}
+
+/* Estilos de botones generales */
+.button-primary,
+.button-secondary {
     display: inline-block;
-    padding: 12px 24px;
-    border-radius: 9999px; /* rounded-full */
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
     font-weight: 600;
     text-decoration: none;
-    transition: var(--transition-speed);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: 1rem;
 }
+
 .button-primary {
-    background-color: var(--primary-red);
-    color: var(--white);
+    background-color: var(--color-dark-gold);
+    color: var(--color-deep-charcoal);
+    border: none;
 }
+
 .button-primary:hover {
-    background-color: var(--secondary-red);
-    transform: translateY(-2px); /* Efecto de elevación */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    background-color: var(--color-muted-gold);
 }
+
 .button-secondary {
     background-color: transparent;
-    border: 2px solid var(--primary-red);
-    color: var(--primary-red);
+    border: 2px solid var(--color-dark-gold);
+    color: var(--color-dark-gold);
 }
+
 .button-secondary:hover {
-    background-color: var(--primary-red);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    background-color: var(--color-dark-gold);
+    color: var(--color-soft-cream);
 }
 
-/* --- Carrusel (Trayectoria) --- */
-.carousel-nav-btn {
-    background-color: var(--deep-charcoal);
-    color: var(--white);
-}
-.carousel-nav-btn:hover {
-    background-color: var(--secondary-red);
-    transform: translateY(-50%) scale(1.05); /* Ligero scale en hover */
-}
-.carousel-dots .dot {
-    background-color: var(--deep-charcoal);
-    opacity: 0.5;
-    transition: var(--transition-speed);
-}
-.carousel-dots .dot.active {
-    opacity: 1;
-    background-color: var(--primary-red);
-    transform: scale(1.2); /* Ligero scale para el punto activo */
-}
-
-/* Estilo para las tarjetas dentro del carrusel */
-#timeline-carousel-container .p-4 > div { /* Apunta al div dentro del p-4 */
-    background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
-    border-left: 5px solid var(--secondary-red); /* Borde lateral */
-    border-radius: 10px;
-    transition: var(--transition-speed);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
-#timeline-carousel-container .p-4 > div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-/* Estilo del título y descripción dentro de la tarjeta del carrusel */
-#timeline-carousel-container h3 {
-    color: var(--primary-red);
-}
-#timeline-carousel-container p {
-    color: var(--deep-charcoal);
-}
-#timeline-carousel-container span { /* Para el año */
-    color: var(--primary-red);
-    font-weight: bold;
-}
-
-
-/* --- Grid de Contenido (Pensamiento y Acción) --- */
+/* Nuevos estilos para los botones de filtro de contenido */
 .filter-btn {
-    /* Las clases button-primary/secondary ya manejan el estilo */
-}
-.filter-btn.button-primary { /* Asegura que el botón activo tenga el estilo correcto */
-    background-color: var(--primary-red);
-    color: var(--white);
-}
-.filter-btn.button-secondary { /* Asegura que los inactivos tengan el estilo correcto */
-    background-color: transparent;
-    border: 2px solid var(--primary-red);
-    color: var(--primary-red);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-
-/* Estilo para las tarjetas de contenido (Pensamiento y Acción) */
-#content-grid > div { /* Apunta directamente al div de la tarjeta */
-    background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
-    border-left: 5px solid var(--secondary-red);
-    border-radius: 10px;
-    transition: var(--transition-speed);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    overflow: hidden; /* Para las imágenes */
-}
-#content-grid > div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-#content-grid h3 {
-    color: var(--primary-red);
-}
-#content-grid p {
-    color: var(--deep-charcoal);
-}
-#content-grid a.inline-block { /* Estilo del botón "Leer más" en las tarjetas */
-    background-color: var(--primary-red);
-    color: var(--white);
-}
-#content-grid a.inline-block:hover {
-    background-color: var(--secondary-red);
+.filter-btn:hover {
+    transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
 }
 
-/* --- Biografía --- */
-.biography-img {
-    border-color: var(--primary-red);
+/* Estilos para la línea de tiempo (timeline) */
+.timeline-item {
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
-/* --- Contacto --- */
-.contact-card {
-    background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
-    border-left: 5px solid var(--secondary-red);
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-.link-style { /* Estilo para enlaces dentro de la tarjeta de contacto */
-    color: var(--primary-red);
-    text-decoration: none;
-    transition: var(--transition-speed);
-}
-.link-style:hover {
-    color: var(--secondary-red);
-    text-decoration: underline;
-}
-.social-icon {
-    color: var(--deep-charcoal);
-    transition: var(--transition-speed);
-}
-.social-icon:hover {
-    color: var(--primary-red);
-    transform: scale(1.1);
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-dark-gold);
+    border-radius: 50%;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid var(--color-light-gray);
+    box-shadow: 0 0 0 4px var(--color-dark-gold); /* Anillo exterior */
 }
 
-/* --- Footer --- */
-.footer-style {
-    background-color: var(--deep-charcoal);
-    color: var(--white);
+/* Ajustes para la línea de tiempo en móviles */
+@media (max-width: 767px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-left: 2px solid var(--color-dark-gold); /* Línea vertical en móvil */
+        padding-left: 1rem;
+        margin-left: 1rem;
+    }
+
+    .timeline-item .timeline-dot {
+        left: -8px; /* Posiciona el punto en la línea vertical */
+        transform: none;
+        top: 0;
+    }
+
+    .timeline-item > div {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-item img {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
-.link-style-footer {
-    color: var(--white);
-    text-decoration: none;
-    transition: var(--transition-speed);
+
+/* CAMBIO: Carrusel multi-slide para tablet y desktop */
+@media (min-width: 768px) { /* Tablet y superior */
+    .carousel-slide {
+        flex: 0 0 calc(50% - 1.5rem); /* Muestra 2 slides con espacio entre ellos */
+        max-width: calc(50% - 1.5rem);
+        margin: 0 0.75rem; /* La mitad del espacio a cada lado del slide */
+    }
 }
-.link-style-footer:hover {
-    color: var(--secondary-red);
-    text-decoration: underline;
-}
 
-/* --- Responsive Adjustments (Tailwind se encarga de la mayoría, pero ajustamos tamaños de fuente) --- */
-@media (max-width: 768px) {
-    h1, .hero-title-style { font-size: 2.8rem; }
-    h2, .section-title { font-size: 2rem; }
-    h3, .article-title, .contact-card-title { font-size: 1.5rem; }
-    p, .section-paragraph, .contact-info-text, .hero-subtitle-style { font-size: 1rem; }
-
-    .hero-section-style { height: 60vh; }
-    .hero-profile-img { width: 100px; height: 100px; }
-
-    .section-style { padding: 40px 0; }
-    .container { padding: 0 15px; }
-
-    /* Ajuste para el grid en móviles */
-    #content-grid {
-        grid-template-columns: 1fr;
+@media (min-width: 1024px) { /* Desktop y superior */
+    .carousel-slide {
+        flex: 0 0 calc(33.333% - 1.5rem); /* Muestra 3 slides con espacio entre ellos */
+        max-width: calc(33.333% - 1.5rem);
+        margin: 0 0.75rem;
     }
 }
