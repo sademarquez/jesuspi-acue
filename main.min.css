@@ -1,216 +1,347 @@
-/* Variables CSS para una gestión de colores más sencilla y consistente */
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables CSS para consistencia (Basado en Justicia y Dignidad) */
 :root {
-    --color-soft-cream: #FBF8F0; /* Soft Cream */
-    --color-deep-charcoal: #4A4441; /* Deep Charcoal */
-    --color-dark-gold: #D4AF37; /* Muted Gold */
-    --color-muted-gold: #E0DCD4; /* Lighter Gold for backgrounds/hover */
-    --color-light-gray: #f8f8f8; /* Un gris claro para secciones de fondo */
+    --primary-red: #8b0000; /* Rojo oscuro principal */
+    --secondary-red: #dc143c; /* Rojo más brillante/activo */
+    --deep-charcoal: #333333; /* Negro/Gris muy oscuro para texto */
+    --light-gray-bg: #f8f8f8; /* Fondo de sección claro */
+    --white: #fff; /* Blanco puro */
+    --soft-cream: #fbf8f0; /* Color original de tu página, mantenido para algunas áreas sutiles */
+    --transition-speed: all 0.3s ease; /* Velocidad de transición general */
+    --gradient-overlay: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, var(--primary-red) 40%, rgba(0,0,0,0.8) 100%);
 }
 
-/* Reset básico y estilos generales del cuerpo */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--color-soft-cream);
-    color: var(--color-deep-charcoal);
-    line-height: 1.6; /* Mejora la legibilidad */
-    margin: 0; /* Asegura que no haya margen por defecto en el body */
-    padding: 0; /* Asegura que no haya padding por defecto en el body */
-    overflow-x: hidden; /* Previene el scroll horizontal no deseado */
+    font-family: 'Georgia', serif; /* Fuente principal */
+    line-height: 1.6;
+    color: var(--deep-charcoal);
+    background-color: var(--light-gray-bg);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-/* Clases de Tailwind redefinidas para usar variables CSS (si compilas Tailwind) */
-/* Si no compilas Tailwind, estas clases no son necesarias aquí, ya las maneja Tailwind */
-.bg-soft-cream { background-color: var(--color-soft-cream); }
-.text-deep-charcoal { color: var(--color-deep-charcoal); }
-.text-dark-gold { color: var(--color-dark-gold); }
-.bg-dark-gold { background-color: var(--color-dark-gold); }
-.bg-muted-gold { background-color: var(--color-muted-gold); }
-.bg-light-gray { background-color: var(--color-light-gray); }
+/* --- Tipografía Jerárquica (Adaptada de la guía) --- */
+h1, .hero-title-style {
+    font-family: 'Georgia', serif;
+    font-size: 3.5rem; /* Ajustado para pantallas grandes */
+    font-weight: bold;
+    color: var(--white); /* Para el héroe */
+    margin-bottom: 0.5rem;
+}
+h2, .section-title {
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem; /* Ajustado para pantallas grandes */
+    color: var(--primary-red);
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+h3, .article-title, .contact-card-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    color: var(--primary-red);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+p, .section-paragraph, .contact-info-text, .hero-subtitle-style {
+    font-family: 'Inter', sans-serif; /* Usar Inter para el cuerpo del texto para legibilidad */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--deep-charcoal);
+}
+/* Asegura que el texto del hero sea blanco */
+.hero-subtitle-style {
+    color: var(--white);
+}
 
-/* Estilos específicos del menú móvil */
-#mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
+/* --- Estilos Generales de Contenedores y Secciones --- */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+.section-style {
+    padding: 60px 0;
+    background-color: var(--light-gray-bg);
+}
+/* Alternar color de fondo para las secciones para contraste */
+#pensamiento, #contacto {
+    background-color: var(--white);
+}
+
+/* --- Header y Navegación --- */
+.header-style {
+    background: rgba(0,0,0,0.9); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    padding: 15px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más pronunciada */
+    transition: var(--transition-speed);
+}
+.header-logo-text {
+    color: var(--white);
+}
+.header-logo-text:hover {
+    color: var(--secondary-red);
+}
+
+/* Navegación de Escritorio */
+.nav-desktop-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px; /* Espacio para el subrayado */
+}
+.nav-desktop-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-red);
+    transition: width 0.3s ease-in-out;
+}
+.nav-desktop-link:hover::after,
+.nav-desktop-link.active::after {
     width: 100%;
-    height: 100vh;
-    background-color: var(--color-deep-charcoal);
-    color: var(--color-soft-cream);
-    padding: 6rem 1rem 1rem;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* Oculto por defecto (fuera de la pantalla) */
-    transform: translateX(100%); 
-    /* Transición suave al aparecer/desaparecer */
-    transition: transform 0.3s ease-out; 
+}
+.nav-desktop-link.active {
+    color: var(--secondary-red); /* Color para el link activo en escritorio */
 }
 
+/* Botón del Menú Móvil */
+.mobile-menu-button {
+    color: var(--white);
+}
+
+/* Menú Móvil Desplegable */
+#mobile-menu {
+    background: var(--deep-charcoal); /* Fondo oscuro */
+    color: var(--white);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+}
 #mobile-menu.active {
-    /* Visible (se desliza hacia la pantalla) */
-    transform: translateX(0); 
+    transform: translateX(0);
 }
-
-#mobile-menu a {
-    color: var(--color-soft-cream);
-    font-size: 1.5rem;
+.nav-mobile-link {
+    color: var(--white);
     padding: 1rem 0;
+    font-size: 1.5rem;
     display: block;
     width: 100%;
     text-align: center;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: var(--transition-speed);
+}
+.nav-mobile-link:hover {
+    color: var(--secondary-red);
+}
+.nav-mobile-link.active {
+    color: var(--secondary-red); /* Color para el link activo en móvil */
 }
 
-#mobile-menu a:hover {
-    color: var(--color-dark-gold);
+/* --- Hero Section --- */
+.hero-section-style {
+    height: 70vh; /* Altura similar al ejemplo */
+    background-size: cover;
+    background-position: center;
+}
+.hero-overlay-gradient {
+    background: var(--gradient-overlay); /* Gradiente rojo-negro */
+}
+.hero-profile-img {
+    border-color: var(--primary-red); /* Borde de la imagen de perfil */
 }
 
-/* Ocultar el botón del menú burger y mostrar la navegación normal en pantallas grandes */
-@media (min-width: 768px) {
-    #mobile-menu-button {
-        display: none; /* Oculta el botón burger en pantallas grandes */
-    }
-
-    #desktop-nav {
-        display: flex !important; /* Asegura que la navegación de escritorio se muestre */
-    }
-
-    #mobile-menu {
-        display: none !important; /* Asegura que el menú móvil esté oculto en pantallas grandes */
-        transform: translateX(100%); /* Reset transform when hidden */
-    }
+/* --- Botones --- */
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 9999px; /* rounded-full */
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-speed);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.button-primary {
+    background-color: var(--primary-red);
+    color: var(--white);
+}
+.button-primary:hover {
+    background-color: var(--secondary-red);
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.button-secondary {
+    background-color: transparent;
+    border: 2px solid var(--primary-red);
+    color: var(--primary-red);
+}
+.button-secondary:hover {
+    background-color: var(--primary-red);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* Estilos para los puntos del carrusel */
+/* --- Carrusel (Trayectoria) --- */
+.carousel-nav-btn {
+    background-color: var(--deep-charcoal);
+    color: var(--white);
+}
+.carousel-nav-btn:hover {
+    background-color: var(--secondary-red);
+    transform: translateY(-50%) scale(1.05); /* Ligero scale en hover */
+}
 .carousel-dots .dot {
-    background-color: var(--color-deep-charcoal);
+    background-color: var(--deep-charcoal);
     opacity: 0.5;
-    transition: opacity 0.3s ease;
+    transition: var(--transition-speed);
 }
-
 .carousel-dots .dot.active {
     opacity: 1;
-    background-color: var(--color-dark-gold); /* Color para el punto activo */
+    background-color: var(--primary-red);
+    transform: scale(1.2); /* Ligero scale para el punto activo */
 }
 
-/* Base de utilidades de Tailwind (si no estás usando el CLI o un proceso de compilación) */
-/* Si estás usando Tailwind CLI o PostCSS, estas clases son generadas automáticamente.
-   Estas son solo para referencia o si las estás usando de forma manual sin compilación. */
-.container {
-    max-width: 1200px; /* Ancho máximo para el contenido */
-    margin-left: auto;
-    margin-right: auto;
+/* Estilo para las tarjetas dentro del carrusel */
+#timeline-carousel-container .p-4 > div { /* Apunta al div dentro del p-4 */
+    background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
+    border-left: 5px solid var(--secondary-red); /* Borde lateral */
+    border-radius: 10px;
+    transition: var(--transition-speed);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+#timeline-carousel-container .p-4 > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+/* Estilo del título y descripción dentro de la tarjeta del carrusel */
+#timeline-carousel-container h3 {
+    color: var(--primary-red);
+}
+#timeline-carousel-container p {
+    color: var(--deep-charcoal);
+}
+#timeline-carousel-container span { /* Para el año */
+    color: var(--primary-red);
+    font-weight: bold;
 }
 
-.mx-auto { margin-left: auto; margin-right: auto; }
-.my-auto { margin-top: auto; margin-bottom: auto; }
-.p-4 { padding: 1rem; }
-.pt-20 { padding-top: 5rem; }
-.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-.px-4 { padding-left: 1rem; padding-right: 1rem; }
-.space-x-4 > *:not([hidden]) ~ *:not([hidden]) { margin-left: 1rem; }
-.space-y-4 > *:not([hidden]) ~ *:not([hidden]) { margin-top: 1rem; }
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.justify-between { justify-content: space-between; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-white { color: white; }
-.font-bold { font-weight: 700; }
-.font-semibold { font-weight: 600; }
-.text-2xl { font-size: 1.5rem; }
-.text-5xl { font-size: 3rem; }
-.text-xl { font-size: 1.25rem; }
-.text-lg { font-size: 1.125rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-4 { margin-bottom: 1rem; }
-.mb-6 { margin-bottom: 1.5rem; }
-.mb-8 { margin-bottom: 2rem; }
-.mb-10 { margin-bottom: 2.5rem; }
-.mt-4 { margin-top: 1rem; }
-.mt-6 { margin-top: 1.5rem; }
-.mt-8 { margin-top: 2rem; }
-.shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
-.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-.rounded-full { border-radius: 9999px; }
-.rounded-lg { border-radius: 0.5rem; }
-.rounded-md { border-radius: 0.375rem; }
-.overflow-hidden { overflow: hidden; }
-.w-full { width: 100%; }
-.h-screen { height: 100vh; }
-.h-48 { height: 12rem; }
-.w-36 { width: 9rem; }
-.h-36 { height: 9rem; }
-.w-8 { width: 2rem; }
-.h-8 { height: 2rem; }
-.w-6 { width: 1.5rem; }
-.h-6 { height: 1.5rem; }
-.w-3 { width: 0.75rem; }
-.h-3 { height: 0.75rem; }
-.object-cover { object-fit: cover; }
-.bg-cover { background-size: cover; }
-.bg-center { background-position: center; }
-.relative { position: relative; }
-.absolute { position: absolute; }
-.fixed { position: fixed; }
-.top-0 { top: 0; }
-.left-0 { left: 0; }
-.right-0 { right: 0; }
-.bottom-0 { bottom: 0; }
-.top-1\/2 { top: 50%; }
-.transform { transform: var(--tw-transform); }
-.-translate-y-1\/2 { --tw-translate-y: -50%; }
-.translate-x-full { --tw-translate-x: 100%; } /* Para menú móvil inicial */
-.opacity-70 { opacity: 0.7; }
-.max-w-2xl { max-width: 42rem; }
-.max-w-xl { max-width: 36rem; }
-.max-w-full { max-width: 100%; }
-.transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
-.transition-transform { transition-property: transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
-.duration-200 { transition-duration: 200ms; }
-.duration-300 { transition-duration: 300ms; }
-.duration-500 { transition-duration: 500ms; }
-.ease-in-out { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
-.flex-shrink-0 { flex-shrink: 0; }
-.border-4 { border-width: 4px; }
-.border-2 { border-width: 2px; }
-.border-dark-gold { border-color: var(--color-dark-gold); }
-.cursor-pointer { cursor: pointer; }
-.opacity-50 { opacity: 0.5; }
-.grid { display: grid; }
-.gap-6 { gap: 1.5rem; }
-.gap-8 { gap: 2rem; }
-.gap-10 { gap: 2.5rem; }
-.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-.col-span-full { grid-column: 1 / -1; }
-.text-decoration-none { text-decoration: none; }
-.block { display: block; }
-.inline-block { display: inline-block; }
-.focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
-.focus\:ring-2:focus { --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color); --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); }
-.focus\:ring-dark-gold:focus { --tw-ring-color: var(--color-dark-gold); }
-.z-auto { z-index: auto; }
-.z-0 { z-index: 0; }
-.z-10 { z-index: 10; }
-.z-20 { z-index: 20; }
-.z-30 { z-index: 30; }
-.z-40 { z-index: 40; }
-.z-50 { z-index: 50; }
 
-/* Responsive styles */
-@media (min-width: 768px) {
-    .md\:flex { display: flex; }
-    .md\:hidden { display: none; }
-    .md\:text-left { text-align: left; }
-    .md\:justify-start { justify-content: flex-start; }
-    .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* --- Grid de Contenido (Pensamiento y Acción) --- */
+.filter-btn {
+    /* Las clases button-primary/secondary ya manejan el estilo */
+}
+.filter-btn.button-primary { /* Asegura que el botón activo tenga el estilo correcto */
+    background-color: var(--primary-red);
+    color: var(--white);
+}
+.filter-btn.button-secondary { /* Asegura que los inactivos tengan el estilo correcto */
+    background-color: transparent;
+    border: 2px solid var(--primary-red);
+    color: var(--primary-red);
 }
 
-@media (min-width: 1024px) {
-    .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Estilo para las tarjetas de contenido (Pensamiento y Acción) */
+#content-grid > div { /* Apunta directamente al div de la tarjeta */
+    background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
+    border-left: 5px solid var(--secondary-red);
+    border-radius: 10px;
+    transition: var(--transition-speed);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden; /* Para las imágenes */
+}
+#content-grid > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+#content-grid h3 {
+    color: var(--primary-red);
+}
+#content-grid p {
+    color: var(--deep-charcoal);
+}
+#content-grid a.inline-block { /* Estilo del botón "Leer más" en las tarjetas */
+    background-color: var(--primary-red);
+    color: var(--white);
+}
+#content-grid a.inline-block:hover {
+    background-color: var(--secondary-red);
+}
+
+/* --- Biografía --- */
+.biography-img {
+    border-color: var(--primary-red);
+}
+
+/* --- Contacto --- */
+.contact-card {
+    background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
+    border-left: 5px solid var(--secondary-red);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.link-style { /* Estilo para enlaces dentro de la tarjeta de contacto */
+    color: var(--primary-red);
+    text-decoration: none;
+    transition: var(--transition-speed);
+}
+.link-style:hover {
+    color: var(--secondary-red);
+    text-decoration: underline;
+}
+.social-icon {
+    color: var(--deep-charcoal);
+    transition: var(--transition-speed);
+}
+.social-icon:hover {
+    color: var(--primary-red);
+    transform: scale(1.1);
+}
+
+/* --- Footer --- */
+.footer-style {
+    background-color: var(--deep-charcoal);
+    color: var(--white);
+}
+.link-style-footer {
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition-speed);
+}
+.link-style-footer:hover {
+    color: var(--secondary-red);
+    text-decoration: underline;
+}
+
+/* --- Responsive Adjustments (Tailwind se encarga de la mayoría, pero ajustamos tamaños de fuente) --- */
+@media (max-width: 768px) {
+    h1, .hero-title-style { font-size: 2.8rem; }
+    h2, .section-title { font-size: 2rem; }
+    h3, .article-title, .contact-card-title { font-size: 1.5rem; }
+    p, .section-paragraph, .contact-info-text, .hero-subtitle-style { font-size: 1rem; }
+
+    .hero-section-style { height: 60vh; }
+    .hero-profile-img { width: 100px; height: 100px; }
+
+    .section-style { padding: 40px 0; }
+    .container { padding: 0 15px; }
+
+    /* Ajuste para el grid en móviles */
+    #content-grid {
+        grid-template-columns: 1fr;
+    }
 }
