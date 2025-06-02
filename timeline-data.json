@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Nacimiento",
+        "description": "Jesús Piñacué Achicué viene al mundo en el seno del pueblo Nasa, en el Cauca, marcando el inicio de una vida dedicada al liderazgo y la defensa de su comunidad.",
+        "year": "1980",
+        "image": "timeline-1980.jpg"
+    },
+    {
+        "title": "Activismo Juvenil",
+        "description": "Inicia su participación activa en movimientos estudiantiles y comunitarios, forjando su liderazgo y sentando las bases de su compromiso social y político desde temprana edad.",
+        "year": "1990s",
+        "image": "timeline-1990s.jpg"
+    },
+    {
+        "title": "Consolidación y Reconocimiento",
+        "description": "Se consolida como líder indígena y político, ganando reconocimiento por su incansable trabajo en la defensa de los derechos de su pueblo y la promoción de la interculturalidad.",
+        "year": "2000s",
+        "image": "timeline-2000s.jpg"
+    },
+    {
+        "title": "Iniciativas y Proyectos Clave",
+        "description": "Lidera importantes iniciativas y proyectos que buscan el desarrollo sostenible, la autonomía territorial y la preservación de la cultura Nasa, dejando un impacto duradero en su comunidad.",
+        "year": "2010s",
+        "image": "timeline-2010s.jpg"
+    },
+    {
+        "title": "Incidencia Nacional e Internacional",
+        "description": "En la actualidad, Jesús Piñacué Achicué continúa siendo una voz influyente, participando activamente en foros nacionales e internacionales para abogar por los derechos indígenas y la construcción de la paz en Colombia.",
+        "year": "Actualidad",
+        "image": "timeline-actualidad.jpg"
+    }
+]
