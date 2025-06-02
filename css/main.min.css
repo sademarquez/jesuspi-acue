@@ -16,7 +16,6 @@ body {
 }
 
 /* Clases de Tailwind redefinidas para usar variables CSS (si compilas Tailwind) */
-/* Si no compilas Tailwind, estas clases no son necesarias aquí, ya las maneja Tailwind */
 .bg-soft-cream { background-color: var(--color-soft-cream); }
 .text-deep-charcoal { color: var(--color-deep-charcoal); }
 .text-dark-gold { color: var(--color-dark-gold); }
@@ -146,7 +145,6 @@ body {
 }
 
 /* Cuando la sección padre (.pensamiento-accion) es visible, sus hijos se animan */
-/* Esto se maneja con el Intersection Observer en JS */
 #pensamiento-accion.visible .content-card {
     opacity: 1;
     transform: translateY(0);
