@@ -57,7 +57,7 @@
         </button>
     </div>
 
-    <div id="mobile-menu" class="fixed top-0 right-0 w-full h-screen bg-deep-charcoal text-soft-cream p-12 z-50 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 md:relative md:w-auto md:h-auto md:bg-transparent md:p-0 md:flex md:flex-row md:space-x-4 md:transform-none">
+    <div id="mobile-menu" class="fixed top-0 right-0 w-full h-screen bg-deep-charcoal text-soft-cream p-12 z-50 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300">
         <nav class="flex flex-col items-center space-y-4">
             <a href="#hero" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="hero">Inicio</a>
             <a href="#biografia" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="biografia">Biografía</a>
@@ -173,8 +173,19 @@
                     <button class="filter-btn bg-deep-charcoal text-white px-4 py-2 rounded-full font-semibold hover:bg-dark-gold transition-colors duration-200 mb-2" data-filter="charla">Charlas</button>
                     <button class="filter-btn bg-deep-charcoal text-white px-4 py-2 rounded-full font-semibold hover:bg-dark-gold transition-colors duration-200 mb-2" data-filter="foro">Foros</button>
                 </div>
-                <div id="content-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    </div>
+
+                <div class="relative w-full overflow-hidden mb-12 rounded-lg shadow-lg">
+                    <div id="content-carousel-track" class="flex transition-transform duration-700 ease-in-out h-auto">
+                        </div>
+                    <button id="content-carousel-prev" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-20">
+                        <svg class="w-6 h-6 text-dark-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="content-carousel-next" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-20">
+                        <svg class="w-6 h-6 text-dark-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <div id="content-carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                        </div>
+                </div>
             </div>
         </section>
 
