@@ -28,46 +28,41 @@
     <link rel="preload" href="js/main.min.js" as="script">
 </head>
 <body class="bg-soft-cream text-deep-charcoal font-inter">
-    <header id="main-header" class="fixed w-full bg-soft-cream/90 z-50 transition-shadow duration-300">
-        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-2">
-              <span class="text-xl font-bold text-dark-gold">Jesús Piñacué</span>
-            </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#hero" class="nav-link text-lg font-semibold relative transition-colors duration-300 hover:text-dark-gold" data-section="hero">Inicio</a>
-                <a href="#biografia" class="nav-link text-lg font-semibold relative transition-colors duration-300 hover:text-dark-gold" data-section="biografia">Biografía</a>
-                <a href="#trayectoria" class="nav-link text-lg font-semibold relative transition-colors duration-300 hover:text-dark-gold" data-section="trayectoria">Trayectoria</a>
-                <a href="#pensamiento-accion" class="nav-link text-lg font-semibold relative transition-colors duration-300 hover:text-dark-gold" data-section="pensamiento-accion">Pensamiento y Acción</a>
-                <a href="#contacto" class="nav-link text-lg font-semibold relative transition-colors duration-300 hover:text-dark-gold" data-section="contacto">Asesoria</a>
-            </div>
-          <button id="mobile-menu-button" class="md:hidden p-2 text-deep-charcoal focus:outline-none">
-    <svg class="w-8 h-8 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-    </svg>
-    <svg class="w-8 h-8 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-    </svg>
-</button>
-        </nav>
-   <div id="mobile-menu-button" class="md:hidden p-2 text-deep-charcoal focus:outline-none">
-    <svg class="w-8 h-8 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-    </svg>
-    <svg class="w-8 h-8 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-    </svg>
-</div>
+   <header id="main-header" class="fixed top-0 left-0 w-full z-40 bg-soft-cream/95 shadow-lg py-4 transition-all duration-300">
+    <div class="container mx-auto flex justify-between items-center px-4 md:px-6">
+        <a href="#hero" class="text-2xl font-bold text-deep-charcoal flex items-center group">
+            <img src="images/logo.png" alt="Logo Jesús Piñacué" class="h-10 mr-2 transform transition-transform duration-300 group-hover:scale-105">
+            Jesús Piñacué
+        </a>
 
-<div id="mobile-menu" class="fixed top-0 right-0 w-full h-screen bg-deep-charcoal text-soft-cream p-12 z-50 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 md:relative md:w-auto md:h-auto md:bg-transparent md:p-0 md:flex md:flex-row md:space-x-4 md:transform-none">
-    <nav class="flex flex-col items-center space-y-4">
-        <a href="#hero" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="hero">Inicio</a>
-        <a href="#biografia" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="biografia">Biografía</a>
-        <a href="#trayectoria" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="trayectoria">Trayectoria</a>
-        <a href="#pensamiento-accion" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="pensamiento-accion">Pensamiento </a>
-        <a href="#contacto" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="contacto">Contacto</a>
-    </nav>
-</div>
-    </header>
+        <nav class="hidden md:flex space-x-6">
+            <a href="#hero" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Inicio</a>
+            <a href="#biografia" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Biografía</a>
+            <a href="#trayectoria" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Trayectoria</a>
+            <a href="#pensamiento-accion" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Pensamiento y Acción</a>
+            <a href="#contacto" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Contacto</a>
+        </nav>
+
+        <div id="mobile-menu-button" class="md:hidden p-2 text-deep-charcoal focus:outline-none cursor-pointer">
+            <svg class="w-8 h-8 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+            <svg class="w-8 h-8 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="fixed top-0 right-0 w-full h-screen bg-deep-charcoal text-soft-cream p-12 z-50 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 md:relative md:w-auto md:h-auto md:bg-transparent md:p-0 md:flex md:flex-row md:space-x-4 md:transform-none">
+        <nav class="flex flex-col items-center space-y-4">
+            <a href="#hero" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="hero">Inicio</a>
+            <a href="#biografia" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="biografia">Biografía</a>
+            <a href="#trayectoria" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="trayectoria">Trayectoria</a>
+            <a href="#pensamiento-accion" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="pensamiento-accion">Pensamiento y Acción</a>
+            <a href="#contacto" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="contacto">Contacto</a>
+        </nav>
+    </div>
+</header>
 
     <main>
         <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white section-animated">
