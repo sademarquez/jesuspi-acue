@@ -8,215 +8,73 @@
     <meta name="keywords" content="Jesús Piñacué Achicué, líder indígena, Nasa, Colombia, político, interculturalidad, derechos indígenas, asesoría jurídica, Cauca, Popayán">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.tudominio.com/"> <meta property="og:title" content="Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural">
+    <meta property="og:url" content="https://www.tudominio.com/">
+    <meta property="og:title" content="Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural">
     <meta property="og:description" content="Explore la vida, el legado y el pensamiento de Jesús Piñacué Achicué, líder del pueblo Nasa, político y defensor de la equidad y el desarrollo intercultural en Colombia.">
-    <meta property="og:image" content="https://www.tudominio.com/images/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.tudominio.com/"> <meta property="twitter:title" content="Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural">
+    <meta property="og:image" content="https://www.tudominio.com/images/og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.tudominio.com/">
+    <meta property="twitter:title" content="Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural">
     <meta property="twitter:description" content="Explore la vida, el legado y el pensamiento de Jesús Piñacué Achicué, líder del pueblo Nasa, político y defensor de la equidad y el desarrollo intercultural en Colombia.">
-    <meta property="twitter:image" content="https://www.tudominio.com/images/twitter-image.jpg"> <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta property="twitter:image" content="https://www.tudominio.com/images/twitter-image.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="preload" href="css/main.min.css" as="style">
-    <link rel="stylesheet" href="css/main.min.css">
-    
-    <script src="https://cdn.tailwindcss.com"></script> 
-
-    <link rel="preload" href="js/main.min.js" as="script">
+    <link rel="stylesheet" href="main.min.css">
 </head>
-<body class="bg-soft-cream text-deep-charcoal font-inter">
-   <header id="main-header" class="fixed top-0 left-0 w-full z-40 bg-soft-cream/95 shadow-lg py-4 transition-all duration-300">
-    <div class="container mx-auto flex justify-between items-center px-4 md:px-6">
-        <a href="#hero" class="text-2xl font-bold text-deep-charcoal flex items-center group">
-        <class="h-10 mr-2 transform transition-transform duration-300 group-hover:scale-105">
-            Jesús Piñacué
-        </a>
+<body>
+    <header id="main-header" class="bg-soft-cream text-deep-charcoal p-4 shadow-md fixed w-full top-0 left-0 z-40">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Jesús Piñacué Achicué</a>
 
-        <nav class="hidden md:flex space-x-6">
-            <a href="#hero" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Inicio</a>
-            <a href="#biografia" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Biografía</a>
-            <a href="#trayectoria" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Trayectoria</a>
-            <a href="#pensamiento-accion" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Pensamiento y Acción</a>
-            <a href="#contacto" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Contacto</a>
-        </nav>
+            <nav id="desktop-nav" class="hidden md:flex space-x-6">
+                <a href="#trayectoria" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Trayectoria</a>
+                <a href="#pensamiento" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Pensamiento y Acción</a>
+                <a href="#biografia" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Biografía</a>
+                <a href="#contacto" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Contacto</a>
+            </nav>
 
-        <div id="mobile-menu-button" class="md:hidden p-2 text-deep-charcoal focus:outline-none cursor-pointer">
-            <svg class="w-8 h-8 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-            <svg class="w-8 h-8 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
+            <button id="mobile-menu-button" class="md:hidden text-deep-charcoal focus:outline-none focus:ring-2 focus:ring-dark-gold">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
-    </div>
 
-    <div id="mobile-menu" class="fixed top-0 right-0 w-full h-screen bg-deep-charcoal text-soft-cream p-12 z-50 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 md:relative md:w-auto md:h-auto md:bg-transparent md:p-0 md:flex md:flex-row md:space-x-4 md:transform-none">
-        <nav class="flex flex-col items-center space-y-4">
-            <a href="#hero" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="hero">Inicio</a>
-            <a href="#biografia" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="biografia">Biografía</a>
-            <a href="#trayectoria" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="trayectoria">Trayectoria</a>
-            <a href="#pensamiento-accion" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="pensamiento-accion">Pensamiento y Acción</a>
-            <a href="#contacto" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="contacto">Contacto</a>
-        </nav>
-    </div>
-</header>
-
-    <main>
-        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white section-animated">
-            <div class="absolute inset-0 bg-dark-charcoal opacity-60"></div>
-            <div class="relative z-10 text-center px-6">
-                <h1 class="text-4xl md:text-6xl font-bold text-shadow animate-fade-in-up">Jesús Piñacué Achicué</h1>
-                <p class="mt-4 text-xl md:text-2xl text-shadow animate-fade-in-up delay-200">Líder Indígena, Político y Defensor Intercultural.</p>
-                <a href="#biografia" class="mt-8 inline-block bg-dark-gold text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-muted-gold transition-all duration-300 animate-fade-in-up delay-400">Conoce Más</a>
-            </div>
-        </section>
-
-        <section id="biografia" class="py-20 px-6 bg-soft-cream text-deep-charcoal section-animated">
-            <div class="container mx-auto max-w-4xl text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-dark-gold">Mi Historia</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <img src="images/biografia-img.jpg" alt="Jesús Piñacué joven" class="rounded-lg shadow-xl mx-auto mb-6 md:mb-0 transform hover:scale-105 transition-transform duration-300"> </div>
-                    <div class="text-left">
-                        <p class="text-lg leading-relaxed mb-4">Originario del <span class="font-semibold text-dark-gold">Pueblo Nasa</span>, mi vida ha sido un reflejo de la lucha por la defensa de la autonomía territorial y cultural. Desde joven, entendí la importancia de la educación y el derecho propio como pilares de la resistencia y el desarrollo.</p>
-                        <p class="text-lg leading-relaxed mb-4">Mi trayectoria ha estado marcada por un compromiso inquebrantable con mi gente y con el <span class="font-semibold text-dark-gold">diálogo intercultural</span>, buscando construir puentes entre diferentes visiones del mundo para una Colombia más justa y equitativa.</p>
-                        <p class="text-lg leading-relaxed">Conoce más sobre los momentos clave que han forjado mi camino y mi pensamiento.</p>
-                        <a href="#trayectoria" class="mt-6 inline-block bg-deep-charcoal text-white px-6 py-2 rounded-full text-md font-semibold hover:bg-dark-gold transition-colors duration-300">Ver Trayectoria</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="trayectoria" class="py-20 px-6 bg-light-gray text-deep-charcoal section-animated">
-            <div class="container mx-auto max-w-6xl">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-dark-gold">Momentos Clave</h2>
-                
-                <div class="relative w-full overflow-hidden mb-12 rounded-lg shadow-lg">
-                    <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out h-96 md:h-[500px]">
-                        </div>
-                    <button id="carousel-prev" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-20">
-                        <svg class="w-6 h-6 text-dark-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </button>
-                    <button id="carousel-next" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-20">
-                        <svg class="w-6 h-6 text-dark-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
-                        </div>
-                </div>
-
-                <div class="relative mt-20">
-                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-dark-gold hidden md:block"></div>
-                    <div class="flex flex-col items-center">
-                        <div class="timeline-item w-full md:w-1/2 mb-12 relative flex md:flex-row flex-col items-start md:items-center p-4 md:p-0">
-                            <div class="timeline-dot hidden md:block"></div>
-                            <div class="md:w-1/2 md:pr-8 md:text-right text-center mb-4 md:mb-0 order-2 md:order-1">
-                                <h3 class="text-xl md:text-2xl font-semibold text-dark-gold">1980 - Nacimiento</h3>
-                                <p class="text-lg">Nace en el seno del pueblo Nasa, en el Cauca, Colombia.</p>
-                            </div>
-                            <div class="md:w-1/2 md:pl-8 text-center md:text-left order-1 md:order-2">
-                                <img src="images/timeline-1980.jpg" alt="Imagen representativa de 1980" class="rounded-lg shadow-md w-full max-w-xs mx-auto md:ml-auto"> </div>
-                        </div>
-                        <div class="timeline-item w-full md:w-1/2 mb-12 relative flex md:flex-row-reverse flex-col items-start md:items-center p-4 md:p-0">
-                            <div class="timeline-dot hidden md:block"></div>
-                            <div class="md:w-1/2 md:pl-8 md:text-left text-center mb-4 md:mb-0 order-2 md:order-1">
-                                <h3 class="text-xl md:text-2xl font-semibold text-dark-gold">1990s - Activismo Juvenil</h3>
-                                <p class="text-lg">Inicia su participación en movimientos estudiantiles y comunitarios.</p>
-                            </div>
-                            <div class="md:w-1/2 md:pr-8 text-center md:text-right order-1 md:order-2">
-                                <img src="images/timeline-1990s.jpg" alt="Imagen representativa de los 90s" class="rounded-lg shadow-md w-full max-w-xs mx-auto md:mr-auto"> </div>
-                        </div>
-                        <div class="timeline-item w-full md:w-1/2 mb-12 relative flex md:flex-row flex-col items-start md:items-center p-4 md:p-0">
-                            <div class="timeline-dot hidden md:block"></div>
-                            <div class="md:w-1/2 md:pr-8 md:text-right text-center mb-4 md:mb-0 order-2 md:order-1">
-                                <h3 class="text-xl md:text-2xl font-semibold text-dark-gold">2000s - Liderazgo Comunitario</h3>
-                                <p class="text-lg">Asume roles de liderazgo en su comunidad y a nivel regional.</p>
-                            </div>
-                            <div class="md:w-1/2 md:pl-8 text-center md:text-left order-1 md:order-2">
-                                <img src="images/timeline-2000s.jpg" alt="Imagen representativa de los 2000s" class="rounded-lg shadow-md w-full max-w-xs mx-auto md:ml-auto"> </div>
-                        </div>
-                        <div class="timeline-item w-full md:w-1/2 mb-12 relative flex md:flex-row-reverse flex-col items-start md:items-center p-4 md:p-0">
-                            <div class="timeline-dot hidden md:block"></div>
-                            <div class="md:w-1/2 md:pl-8 md:text-left text-center mb-4 md:mb-0 order-2 md:order-1">
-                                <h3 class="text-xl md:text-2xl font-semibold text-dark-gold">2010s - Incidencia Política Nacional</h3>
-                                <p class="text-lg">Participa activamente en foros nacionales e internacionales por los derechos indígenas.</p>
-                            </div>
-                            <div class="md:w-1/2 md:pr-8 text-center md:text-right order-1 md:order-2">
-                                <img src="images/timeline-2010s.jpg" alt="Imagen representativa de los 2010s" class="rounded-lg shadow-md w-full max-w-xs mx-auto md:mr-auto"> </div>
-                        </div>
-                        <div class="timeline-item w-full md:w-1/2 mb-12 relative flex md:flex-row flex-col items-start md:items-center p-4 md:p-0">
-                            <div class="timeline-dot hidden md:block"></div>
-                            <div class="md:w-1/2 md:pr-8 md:text-right text-center mb-4 md:mb-0 order-2 md:order-1">
-                                <h3 class="text-xl md:text-2xl font-semibold text-dark-gold">Actualidad - Continúa su legado</h3>
-                                <p class="text-lg">Actualmente, sigue trabajando por la equidad y el desarrollo intercultural.</p>
-                            </div>
-                            <div class="md:w-1/2 md:pl-8 text-center md:text-left order-1 md:order-2">
-                                <img src="images/timeline-actualidad.jpg" alt="Imagen representativa de la actualidad" class="rounded-lg shadow-md w-full max-w-xs mx-auto md:ml-auto"> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pensamiento-accion" class="py-20 px-6 bg-soft-cream text-deep-charcoal section-animated">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-dark-gold">Pensamiento y Acción</h2>
-                <div class="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-8">
-                    <button class="filter-btn bg-dark-gold text-white px-4 py-2 rounded-full font-semibold hover:bg-muted-gold transition-colors duration-200 mb-2" data-category="all">Todos</button>
-                    <button class="filter-btn bg-deep-charcoal text-white px-4 py-2 rounded-full font-semibold hover:bg-dark-gold transition-colors duration-200 mb-2" data-category="escrito">Escritos</button>
-                    <button class="filter-btn bg-deep-charcoal text-white px-4 py-2 rounded-full font-semibold hover:bg-dark-gold transition-colors duration-200 mb-2" data-category="charla">Charlas</button>
-                    <button class="filter-btn bg-deep-charcoal text-white px-4 py-2 rounded-full font-semibold hover:bg-dark-gold transition-colors duration-200 mb-2" data-category="foro">Foros</button>
-                </div>
-                <div id="content-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="py-20 px-6 bg-light-gray text-deep-charcoal section-animated">
-            <div class="container mx-auto max-w-3xl text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-dark-gold">Asesoria Juridia</h2>
-                <p class="text-lg leading-relaxed mb-8">Si tienes preguntas, propuestas o quieres conocer más sobre mi trabajo, no dudes en contactarme.</p>
-                <form action="#" method="POST" class="bg-white p-8 rounded-lg shadow-lg"> <div class="mb-6">
-                        <label for="name" class="block text-left text-deep-charcoal text-sm font-semibold mb-2">Nombre</label>
-                        <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-dark-gold" placeholder="Tu Nombre Completo" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="email" class="block text-left text-deep-charcoal text-sm font-semibold mb-2">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-dark-gold" placeholder="tu.email@ejemplo.com" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="block text-left text-deep-charcoal text-sm font-semibold mb-2">Mensaje</label>
-                        <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-dark-gold resize-y" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                    </div>
-                    <button type="submit" class="bg-dark-gold text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-muted-gold transition-colors duration-300">Enviar Mensaje</button>
-                </form>
-                <div class="mt-12">
-                    <p class="text-lg font-semibold mb-4">También puedes seguirme en redes sociales:</p>
-                    <div class="flex justify-center space-x-6">
-                        <a href="https://www.facebook.com/tupagina" target="_blank" rel="noopener noreferrer" class="text-deep-charcoal hover:text-dark-gold transition-colors duration-200">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 10h3v4h-3v7h-4v-7H7v-4h3V7.5C10 5.57 11.2 4 14 4h3v3h-3c-1.1 0-1.5 0-1.5 1.5V10z"/></svg>
-                        </a>
-                        <a href="https://twitter.com/tuusuario" target="_blank" rel="noopener noreferrer" class="text-deep-charcoal hover:text-dark-gold transition-colors duration-200">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.46 6c-.85.38-1.76.64-2.72.76.98-.59 1.73-1.5 2.08-2.61-.91.54-1.92.93-3 1.14-.85-.9-2.07-1.46-3.41-1.46-2.58 0-4.68 2.1-4.68 4.68 0 .37.04.73.11 1.07-3.89-.2-7.34-2.06-9.65-4.88-.4.69-.63 1.48-.63 2.34 0 1.62.82 3.06 2.06 3.91-.76-.02-1.47-.23-2.09-.58v.06c0 2.27 1.62 4.16 3.76 4.59-.4.11-.8.17-1.22.17-.3 0-.58-.03-.86-.08.6 1.86 2.33 3.22 4.39 3.26-1.6 1.25-3.62 2-5.83 2-.38 0-.75-.02-1.12-.06 2.07 1.32 4.52 2.09 7.15 2.09 8.58 0 13.25-7.12 13.25-13.25 0-.2-.01-.39-.02-.59.91-.65 1.7-1.47 2.32-2.39z"/></svg>
-                        </a>
-                        <a href="https://www.instagram.com/tuusuario" target="_blank" rel="noopener noreferrer" class="text-deep-charcoal hover:text-dark-gold transition-colors duration-200">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2.2V7.8c0 .4-.3.8-.8.8s-.8-.3-.8-.8V4.2h1.6zM12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm6.4 1.2c-.3 0-.6.1-.8.4-.2.2-.4.5-.4.8v4.8c0 .3.1.6.4.8.2.2.5.4.8.4h4.8c.3 0 .6-.1.8-.4.2-.2.4-.5.4-.8V11c0-.3-.1-.6-.4-.8-.2-.2-.5-.4-.8-.4h-4.8zM12 10.4c-1.43 0-2.6 1.17-2.6 2.6s1.17 2.6 2.6 2.6 2.6-1.17 2.6-2.6-1.17-2.6-2.6-2.6z"/></svg>
-                        </a>
-                        </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-deep-charcoal text-soft-cream py-10 px-6">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2025 Jesús Piñacué Achicué. Todos los derechos reservados a sademarquez creador digital.</p>
-            <p class="mt-2 text-sm">Desarrollado con compromiso y visión.</p>
+        <div id="mobile-menu">
+            <nav class="flex flex-col items-center space-y-4 pt-8">
+                <a href="#trayectoria" class="nav-link text-soft-cream hover:text-dark-gold transition-colors duration-200 text-lg">Trayectoria</a>
+                <a href="#pensamiento" class="nav-link text-soft-cream hover:text-dark-gold transition-colors duration-200 text-lg">Pensamiento y Acción</a>
+                <a href="#biografia" class="nav-link text-soft-cream hover:text-dark-gold transition-colors duration-200 text-lg">Biografía</a>
+                <a href="#contacto" class="nav-link text-soft-cream hover:text-dark-gold transition-colors duration-200 text-lg">Contacto</a>
+            </nav>
         </div>
-    </footer>
+    </header>
 
-    <script src="js/main.min.js"></script>
-</body>
-</html>
+    <main class="pt-20">
+        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-center text-white" style="background-image: url('https://placehold.co/1920x1080/4A4441/FBF8F0?text=Hero+Image');">
+            <div class="absolute inset-0 bg-deep-charcoal opacity-70"></div>
+            <div class="relative z-10 p-4">
+                <img src="https://placehold.co/150x150/D4AF37/FBF8F0?text=JP" alt="Foto de Jesús Piñacué Achicué" class="rounded-full w-36 h-36 mx-auto mb-4 border-4 border-dark-gold">
+                <h1 class="text-5xl font-bold mb-4">Jesús Piñacué Achicué</h1>
+                <p class="text-xl max-w-2xl mx-auto">Líder indígena del pueblo Nasa, voz de la interculturalidad y la equidad en Colombia.</p>
+                <div class="mt-8 space-x-4">
+                    <a href="#biografia" class="bg-dark-gold text-deep-charcoal px-6 py-3 rounded-full hover:bg-muted-gold transition-colors duration-200 text-lg font-semibold shadow-lg">Conoce más</a>
+                    <a href="#contacto" class="border-2 border-dark-gold text-soft-cream px-6 py-3 rounded-full hover:bg-dark-gold hover:text-deep-charcoal transition-colors duration-200 text-lg font-semibold shadow-lg">Contacto</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="trayectoria-section" class="py-16 bg-light-gray text-deep-charcoal">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-10 text-dark-gold">Trayectoria</h2>
+                <div id="timeline-carousel-container" class="relative w-full overflow-hidden">
+                    <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                        </div>
+
+                    <button id="carousel-prev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-deep-charcoal text-white p-3 rounded-full shadow-lg hover:bg-dark-gold transition-colors z-20">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="carousel-next" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-deep-charcoal text-white p-3
