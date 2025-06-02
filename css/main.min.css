@@ -208,7 +208,8 @@ header nav .nav-link:hover {
     display: flex;
     overflow-x: hidden; /* Hide scrollbar, JS handles movement */
     scroll-behavior: smooth;
-    padding: 0 1rem; /* Padding for the track to show partial next/prev slides */
+    padding: 0; /* Remove padding from track, handle with slide margins */
+    margin-left: 0.5rem; /* Compensate for first slide's left margin */
     box-sizing: border-box; /* Include padding in width */
 }
 
@@ -221,6 +222,8 @@ header nav .nav-link:hover {
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* More prominent shadow */
     transition: transform 0.7s ease-in-out; /* Smooth transition for JS movement */
+    padding: 0; /* No padding on slide itself, content inside has padding */
+    margin: 0 0.5rem; /* 0.5rem on each side means 1rem between slides */
 }
 
 .carousel-slide img {
@@ -237,22 +240,19 @@ header nav .nav-link:hover {
 /* Responsive adjustments for Trayectoria carousel */
 @media (max-width: 767px) { /* Mobile */
     .carousel-slide {
-        width: calc(100% - 2rem); /* Full width minus total margin */
-        margin: 0 1rem; /* 1rem margin on each side */
+        width: calc(100% - 1rem); /* Full width minus total margin */
     }
 }
 
 @media (min-width: 768px) { /* md breakpoint */
     .carousel-slide {
-        width: calc(50% - 2rem); /* Show 2 slides, with 2rem total margin */
-        margin: 0 1rem; /* 1rem margin on each side */
+        width: calc(50% - 1rem); /* Show 2 slides, with 1rem total margin between them */
     }
 }
 
 @media (min-width: 1024px) { /* lg breakpoint */
     .carousel-slide {
-        width: calc(33.333% - 2rem); /* Show 3 slides, with 2rem total margin */
-        margin: 0 1rem;
+        width: calc(33.333% - 1rem); /* Show 3 slides, with 1rem total margin between them */
     }
 }
 
@@ -320,7 +320,8 @@ header nav .nav-link:hover {
     display: flex;
     overflow-x: hidden; /* Hide scrollbar, JS handles movement */
     scroll-behavior: smooth;
-    padding: 0 1rem; /* Padding for the track to show partial next/prev slides */
+    padding: 0; /* Remove padding from track, handle with slide margins */
+    margin-left: 0.5rem; /* Compensate for first slide's left margin */
     box-sizing: border-box;
 }
 
@@ -329,6 +330,7 @@ header nav .nav-link:hover {
     box-sizing: border-box; /* Crucial: padding and border included in width */
     padding: 1rem; /* Padding around the content item */
     transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+    margin: 0 0.5rem; /* 0.5rem on each side means 1rem between slides */
 }
 
 .content-item {
@@ -377,22 +379,19 @@ header nav .nav-link:hover {
 /* Responsive adjustments for Pensamiento y Acción carousel */
 @media (max-width: 767px) { /* Mobile */
     .content-carousel-slide {
-        width: calc(100% - 2rem); /* Full width minus total margin */
-        margin: 0 1rem; /* 1rem margin on each side */
+        width: calc(100% - 1rem); /* Full width minus total margin */
     }
 }
 
 @media (min-width: 768px) { /* md breakpoint */
     .content-carousel-slide {
-        width: calc(50% - 2rem); /* Show 2 slides with 2rem total margin */
-        margin: 0 1rem; /* 1rem margin on each side */
+        width: calc(50% - 1rem); /* Show 2 slides with 1rem total margin between them */
     }
 }
 
 @media (min-width: 1024px) { /* lg breakpoint */
     .content-carousel-slide {
-        width: calc(33.333% - 2rem); /* Show 3 slides with 2rem total margin */
-        margin: 0 1rem;
+        width: calc(33.333% - 1rem); /* Show 3 slides with 1rem total margin between them */
     }
 }
 
