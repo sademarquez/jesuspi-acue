@@ -328,12 +328,12 @@ footer a:hover {
 
 /* Estilos para el menú móvil */
 #mobile-menu {
-    position: fixed; /* O fixed si quieres que flote sobre el contenido */
-    top: 0; /* O la altura de tu header si es fijo y quieres que empiece debajo */
+    position: fixed;
+    top: 0;
     right: 0;
-    width: 100%; /* Cubre todo el ancho del móvil */
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    background-color: var(--color-deep-charcoal); /* Fondo oscuro para el menú */
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-deep-charcoal);
     color: var(--color-soft-cream);
     padding: 6rem 1rem 1rem; /* Padding superior para el header y el resto */
     z-index: 50; /* Alto z-index para que esté encima de todo */
@@ -343,6 +343,9 @@ footer a:hover {
     justify-content: center;
     transform: translateX(100%); /* Oculto por defecto (fuera de la pantalla) */
     transition: transform 0.3s ease-out; /* Transición suave al aparecer/desaparecer */
+
+    /* Ocultar visualmente por defecto en pantallas grandes, pero permitir que el JS lo manipule en móviles */
+    /* Este display:none se manejará en la media query para desktop */
 }
 
 #mobile-menu.active {
@@ -367,80 +370,19 @@ footer a:hover {
 /* Ocultar el menú burger y mostrar la navegación normal en pantallas grandes */
 @media (min-width: 768px) {
     #mobile-menu-button {
-        display: none; /* Oculta el botón del menú burger */
+        display: none; /* Oculta el botón del menú burger en desktop */
     }
+    /* Restaura el menú para que se vea como navegación de escritorio */
     #mobile-menu {
-        /* Deshabilita los estilos del menú móvil para pantallas grandes */
-        position: static;
-        transform: translateX(0); /* Asegura que no haya transformación */
-        width: auto;
-        height: auto;
-        background-color: transparent;
-        color: inherit;
-        padding: 0;
-        z-index: auto;
+        position: static; /* No es fijo */
+        transform: translateX(0); /* Sin transformación */
+        width: auto; /* Ancho automático */
+        height: auto; /* Altura automática */
+        background-color: transparent; /* Fondo transparente */
+        color: inherit; /* Color de texto normal */
+        padding: 0; /* Sin padding */
+        z-index: auto; /* Z-index automático */
         flex-direction: row; /* Vuelve a ser una fila */
-    }
-}
-
-/* Media Queries para responsividad */
-@media (min-width: 768px) {
-    /* Ajustes generales de layout para pantallas medianas */
-    .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-    .md\:gap-8 { gap: 2rem; }
-    .md\:items-center { align-items: center; }
-    .md\:text-left { text-align: left; }
-    .md\:order-first { order: -1; } /* Para reordenar elementos en grid */
-    .md\:ml-auto { margin-left: auto; }
-    .md\:mr-auto { margin-right: auto; }
-
-    /* Ajuste para el carrusel en pantallas medianas */
-    #carousel-track {
-        /* Permite ver parcialmente los slides contiguos para un efecto de "encapsulado" */
-        padding-left: 4rem; /* Más padding a la izquierda para el efecto */
-        padding-right: 4rem; /* Más padding a la derecha */
-        justify-content: flex-start; /* Asegura que el contenido inicie desde la izquierda */
-        overflow-x: hidden; /* Oculta la barra de desplazamiento visual */
-    }
-
-    .carousel-slide {
-        /* Muestra 2 slides por vista, con 2rem de margen entre ellos y en los bordes */
-        flex: 0 0 calc(50% - 2rem); 
-        margin: 0 1rem; /* Margen de 1rem a cada lado del slide (total 2rem entre slides) */
-        max-width: none; /* Elimina el max-w-xs para que el flexbox controle el ancho */
-    }
-
-    #carousel-prev { left: 1rem; } /* Vuelve a separarlos un poco del borde */
-    #carousel-next { right: 1rem; }
-}
-
-@media (min-width: 1024px) {
-    /* Ajustes generales de layout para pantallas grandes */
-    .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .lg\:gap-12 { gap: 3rem; }
-
-    /* Ajuste para el carrusel en pantallas grandes */
-    #carousel-track {
-        padding-left: 8rem; /* Más padding a la izquierda para un efecto más pronunciado */
-        padding-right: 8rem; /* Más padding a la derecha */
-    }
-    .carousel-slide {
-        /* Muestra 3 slides por vista, con un margen de 2rem entre ellos */
-        flex: 0 0 calc(33.333% - 2rem); 
-        margin: 0 1rem; /* Margen de 1rem a cada lado (total 2rem entre slides) */
-    }
-    #carousel-prev { left: 2rem; }
-    #carousel-next { right: 2rem; }
-}
-
-@media (min-width: 1280px) {
-    /* Ajuste para pantallas muy grandes (si se desea mostrar más slides) */
-    #carousel-track {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
-    .carousel-slide {
-        flex: 0 0 calc(25% - 2rem); /* Muestra 4 slides */
-        margin: 0 1rem;
+        display: flex !important; /* Asegura que esté visible en desktop, anula cualquier hidden */
     }
 }
