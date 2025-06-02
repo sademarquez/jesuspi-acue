@@ -24,42 +24,302 @@ body {
 .text-deep-charcoal { color: var(--color-deep-charcoal); }
 .text-dark-gold { color: var(--color-dark-gold); }
 .bg-dark-gold { background-color: var(--color-dark-gold); }
-.hover\:bg-dark-gold:hover { background-color: var(--color-dark-gold); }
-.focus\:outline-dark-gold:focus { outline-color: var(--color-dark-gold); }
-.border-dark-gold { border-color: var(--color-dark-gold); }
+.hover\:bg-muted-gold:hover { background-color: var(--color-muted-gold); }
+.bg-light-gray { background-color: var(--color-light-gray); }
 
-/* Estilos de encabezado */
-#main-header {
+
+/* Estilos para el HEADER */
+.header-scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo ligeramente transparente cuando se hace scroll */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+}
+
+/* Estilos para la sección HERO (Inicio) */
+#hero {
+    min-height: 80vh; /* Ocupa al menos el 80% de la altura de la ventana */
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    text-align: center;
+    color: var(--color-soft-cream); /* Color de texto claro para el fondo */
+    position: relative; /* Necesario para el overlay y z-index */
+    padding: 4rem 1rem; /* Padding para espacio */
+
+    /* --- IMAGEN DE FONDO: ASEGÚRATE QUE 'hero-background.jpg' EXISTA EN 'images/' --- */
+    background-image: url('../images/hero-background.jpg'); 
+    background-size: cover; /* La imagen cubrirá todo el espacio */
+    background-position: center; /* La imagen se centrará */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Efecto de paralaje sutil */
+
+    /* Overlay oscuro para mejorar la legibilidad del texto sobre la imagen */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4); /* Capa semi-transparente oscura */
+        z-index: 1; /* Asegura que esté por debajo del contenido */
+    }
+}
+
+/* Asegura que el contenido del hero esté por encima del overlay */
+#hero .container {
+    position: relative;
+    z-index: 2; /* Mayor que el z-index del overlay */
+}
+
+/* Ajustes de color para el texto y botones del hero */
+#hero h1,
+#hero p {
+    color: var(--color-soft-cream);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para mejor contraste */
+}
+
+#hero .button-primary {
+    background-color: var(--color-dark-gold);
+    color: var(--color-deep-charcoal);
+    border: none;
+}
+
+#hero .button-primary:hover {
+    background-color: var(--color-muted-gold);
+}
+
+#hero .button-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-soft-cream);
+    color: var(--color-soft-cream);
+}
+
+#hero .button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos para el carrusel (Trayectoria) */
+#trayectoria {
+    position: relative; /* Para posicionar los botones de navegación */
+    padding: 4rem 0; /* Padding general de la sección */
+    overflow: hidden; /* Esto es importante para ocultar los slides fuera de la vista y el scrollbar */
+    background-color: var(--color-light-gray); /* Añade un fondo sutil a la sección */
+}
+
+#carousel-track {
+    display: flex;
+    overflow-x: scroll; /* Cambiado a 'scroll' para que el snap funcione, pero ocultaremos la barra */
+    -ms-overflow-style: none; /* Para Internet Explorer y Edge */
+    scrollbar-width: none; /* Para Firefox */
+    scroll-behavior: smooth; /* Desplazamiento suave */
+    -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+}
+
+#carousel-track::-webkit-scrollbar {
+    display: none; /* Oculta el scrollbar en navegadores Webkit (Chrome, Safari) */
+}
+
+.carousel-slide {
+    flex: 0 0 auto; /* No crecer, no encoger, base en el tamaño de contenido */
+    width: 280px; /* Ancho fijo consistente */
+    margin-right: 16px; /* Espacio entre slides */
+    scroll-snap-align: start; /* Asegura que los slides se 'encajen' al principio */
+}
+
+/* Ajustes para el último slide para que no tenga margin a la derecha */
+.carousel-slide:last-child {
+    margin-right: 0;
+}
+
+/* Media query for mobile carousel slide width */
+@media (max-width: 640px) {
+    .carousel-slide {
+        width: calc(100vw - 3rem); /* Responsive en móvil */
+    }
+}
+
+
+/* Estilos para los botones de navegación del carrusel */
+.carousel-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: var(--color-deep-charcoal);
     color: var(--color-soft-cream);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav-link {
-    color: var(--color-soft-cream);
-    padding: 0.5rem 1rem;
-    transition: color 0.2s, transform 0.2s;
-}
-
-.nav-link:hover {
-    color: var(--color-dark-gold);
-    transform: translateY(-2px);
-}
-
-/* Estilos del menú móvil */
-#mobile-menu-button {
-    background: none;
-    border: none;
-    color: var(--color-soft-cream);
-    font-size: 2rem;
+    padding: 0.75rem;
+    border-radius: 9999px; /* Hace el botón circular */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease-in-out;
+    z-index: 10; /* Asegura que estén sobre los slides */
     cursor: pointer;
-    z-index: 60;
-    display: block; /* Asegura que esté visible en móvil */
 }
 
+.carousel-nav-button:hover {
+    background-color: var(--color-dark-gold);
+}
+
+#carousel-prev {
+    left: 1rem;
+}
+
+#carousel-next {
+    right: 1rem;
+}
+
+/* Estilos para los puntos de navegación del carrusel */
+#carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 0.75rem; /* Espacio entre los puntos */
+}
+
+#carousel-dots button {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    background-color: var(--color-dark-gold);
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+#carousel-dots button.active {
+    opacity: 1;
+}
+
+/* Estilos para la sección de Pensamiento y Acción */
+#pensamiento-accion .filter-btn {
+    transition: all 0.3s ease-in-out;
+}
+
+#pensamiento-accion .filter-btn.active {
+    background-color: var(--color-dark-gold);
+    color: var(--color-soft-cream);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.content-item {
+    background-color: var(--color-soft-cream);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.content-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.content-item-text {
+    padding: 1.5rem;
+    flex-grow: 1; /* Permite que el contenido de texto ocupe el espacio restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.content-item-text h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-deep-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.content-item-text p {
+    font-size: 0.95rem;
+    color: var(--color-deep-charcoal);
+    line-height: 1.5;
+    flex-grow: 1; /* Asegura que la descripción use el espacio disponible */
+}
+
+.content-item-text a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-dark-gold);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.content-item-text a:hover {
+    color: var(--color-deep-charcoal);
+}
+
+
+/* Estilos para el pie de página */
+footer {
+    background-color: var(--color-deep-charcoal);
+    color: var(--color-soft-cream);
+}
+
+/* Animaciones */
+.section-animated {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-animated.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Queries para Responsive Design */
+
+/* Tablet y Escritorio pequeños (>= 768px) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+
+    #hero h1 {
+        font-size: 4rem;
+    }
+
+    #hero p {
+        font-size: 1.5rem;
+    }
+
+    #biografia .grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #pensamiento-accion .grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Escritorio (>= 1024px) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+
+    #pensamiento-accion .grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Para pantallas aún más grandes (opcional) */
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+/* Mobile Menu */
 #mobile-menu {
     position: fixed;
     top: 0;
@@ -69,7 +329,7 @@ body {
     background-color: var(--color-deep-charcoal);
     color: var(--color-soft-cream);
     padding: 6rem 1rem 1rem;
-    z-index: 50;
+    z-index: 60; /* Changed from 50 to 60 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -102,135 +362,29 @@ body {
     #mobile-menu-button {
         display: none;
     }
+
     #mobile-menu {
         position: static;
         transform: translateX(0);
-        flex-direction: row;
         height: auto;
-        padding: 0;
+        width: auto;
         background-color: transparent;
         color: inherit;
+        padding: 0;
+        z-index: auto;
+        flex-direction: row;
     }
+
+    #mobile-menu nav {
+        flex-direction: row;
+        space-x-4; /* Tailwind utility */
+        space-y-0;
+    }
+
     #mobile-menu a {
-        padding: 0.5rem 1rem;
         font-size: 1rem;
+        padding: 0.5rem 0.75rem;
         width: auto;
-        color: var(--color-soft-cream); /* Asegura que el color sea el correcto en desktop */
+        color: var(--color-deep-charcoal);
     }
-    #mobile-menu a:hover {
-        color: var(--color-dark-gold);
-    }
-}
-
-/* Estilos de la sección hero */
-#hero {
-    position: relative;
-    overflow: hidden;
-    color: white; /* Asegura que el texto sea visible sobre la imagen */
-}
-
-/* SOLUCIÓN: Selector válido para pseudo-elemento */
-#hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Mejor contraste en hero */
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
-    z-index: 1;
-}
-
-#hero > * { /* Asegura que el contenido esté por encima del overlay */
-    position: relative;
-    z-index: 2;
-}
-
-/* Estilos de la sección de pensamiento y acción */
-.filter-btn {
-    transition: all 0.3s ease;
-}
-
-.filter-btn.active {
-    background-color: var(--color-dark-gold);
-    color: var(--color-soft-cream);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.content-item {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animaciones más suaves */
-}
-
-.content-item:hover {
-    transform: translateY(-8px) scale(1.02); /* Animaciones más suaves */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Animaciones más suaves */
-}
-
-/* Estilos del carrusel (Trayectoria) */
-#carousel-track {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory; /* Carrusel: scroll-snap mejorado */
-    -webkit-overflow-scrolling: touch; /* Carrusel: scroll-snap mejorado */
-    touch-action: pan-x; /* Carrusel: scroll-snap mejorado */
-    gap: 1rem; /* Espacio entre slides */
-    scrollbar-width: none; /* Ocultar scrollbar para Firefox */
-    -ms-overflow-style: none;  /* Ocultar scrollbar para IE 10+ */
-}
-
-#carousel-track::-webkit-scrollbar { /* Ocultar scrollbar para Chrome, Safari y Opera */
-    display: none;
-}
-
-.carousel-slide {
-    flex: 0 0 auto;
-    width: 300px; /* Ancho fijo para cada slide */
-    scroll-snap-align: start; /* Cambiar de center a start para mejor alineación */
-    min-width: calc(100vw - 2rem); /* Asegurar ancho completo en móvil */
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 200px; /* Ajusta la altura de la imagen */
-    object-fit: cover;
-    border-radius: 0.5rem;
-}
-
-.carousel-dot {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.carousel-dot.active {
-    background-color: var(--color-dark-gold);
-}
-
-/* Timeline no optimizada para móvil */
-@media (max-width: 768px) {
-    .timeline-item {
-        flex-direction: column !important;
-        text-align: center !important;
-        margin-bottom: 2rem;
-    }
-    .timeline-item img {
-        max-width: 250px;
-        margin: 0 auto 1rem auto;
-    }
-    .absolute.left-1\/2 { /* Corrección en el selector para escapar el '/' */
-        display: none; /* Ocultar línea vertical en móvil */
-    }
-}
-
-/* Añadir estados de focus para accesibilidad */
-.button-primary:focus,
-.button-secondary:focus,
-.filter-btn:focus {
-    outline: 2px solid var(--color-dark-gold);
-    outline-offset: 2px;
 }
