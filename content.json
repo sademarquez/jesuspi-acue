@@ -36,9 +36,16 @@
     },
     {
         "category": "foro",
-        "title": "Justicia Ordinaria y Justicia Indígena",
-        "description": "Una reflexión sobre la necesaria coordinación y el respeto mutuo entre los sistemas de justicia para una verdadera pluralidad jurídica.",
+        "title": "Justicia Indígena y Pluralismo Jurídico",
+        "description": "Debate sobre la coexistencia de sistemas jurídicos y la importancia del reconocimiento de la justicia propia en Colombia.",
         "image": "https://placehold.co/600x400/4A4441/FBF8F0?text=Foro+2",
+        "link": "#"
+    },
+    {
+        "category": "escrito",
+        "title": "El Rol de la Mujer Indígena en la Gobernanza",
+        "description": "Ensayo sobre la participación y el liderazgo de las mujeres en las estructuras de gobierno y toma de decisiones comunitarias.",
+        "image": "https://placehold.co/600x400/8C7851/FBF8F0?text=Escrito+3",
         "link": "#"
     }
 ]
