@@ -49,4 +49,351 @@ body {
     /* --- IMAGEN DE FONDO: ASEGÚRATE QUE 'hero-background.jpg' EXISTA EN 'images/' --- */
     background-image: url('../images/hero-background.jpg'); 
     background-size: cover; /* La imagen cubrirá todo el espacio */
-    background-position: center; /* La
+    background-position: center; /* La imagen se centrará */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Efecto de paralaje sutil */
+
+    /* Overlay oscuro para mejorar la legibilidad del texto sobre la imagen */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4); /* Capa semi-transparente oscura */
+        z-index: 1; /* Asegura que esté por debajo del contenido */
+    }
+}
+
+/* Asegura que el contenido del hero esté por encima del overlay */
+#hero .container {
+    position: relative;
+    z-index: 2; /* Mayor que el z-index del overlay */
+}
+
+/* Ajustes de color para el texto y botones del hero */
+#hero h1,
+#hero p {
+    color: var(--color-soft-cream);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para mejor contraste */
+}
+
+#hero .button-primary {
+    background-color: var(--color-dark-gold);
+    color: var(--color-deep-charcoal);
+    border: none;
+}
+
+#hero .button-primary:hover {
+    background-color: var(--color-muted-gold);
+}
+
+#hero .button-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-soft-cream);
+    color: var(--color-soft-cream);
+}
+#hero .button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Estilos para el carrusel (Trayectoria) */
+#trayectoria {
+    position: relative; /* Para posicionar los botones de navegación */
+    padding: 4rem 0; /* Padding general de la sección */
+    overflow: hidden; /* Esto es importante para ocultar los slides fuera de la vista y el scrollbar */
+    background-color: var(--color-light-gray); /* Añade un fondo sutil a la sección */
+}
+
+#carousel-track {
+    display: flex;
+    overflow-x: scroll; /* Cambiado a 'scroll' para que el snap funcione, pero ocultaremos la barra */
+    -ms-overflow-style: none;  /* Para Internet Explorer y Edge */
+    scrollbar-width: none;  /* Para Firefox */
+    scroll-behavior: smooth; /* Desplazamiento suave al cambiar de slide */
+    scroll-snap-type: x mandatory; /* Fuerza el 'snap' a cada slide */
+    -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
+    padding-bottom: 2rem; /* Espacio para los puntos de navegación */
+    /* Añadido: padding horizontal para crear el "marco" y espaciado en móviles también */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Ocultar scrollbar para #carousel-track en navegadores WebKit (Chrome, Safari) */
+#carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-slide {
+    flex: 0 0 100%; /* Cada slide ocupa el 100% del ancho del contenedor en móvil */
+    scroll-snap-align: center; /* El slide se alinea al centro al hacer scroll-snap */
+    /* Estilos del slide para encapsulado en móviles */
+    max-width: calc(100% - 2rem); /* Limita el ancho del slide para tener un margen lateral en móviles */
+    margin: 0 1rem; /* Margen de 1rem a cada lado del slide (total 2rem entre slides) */
+    padding: 1rem;
+    background-color: var(--color-soft-cream);
+    border-radius: 0.5rem; /* rounded-lg en Tailwind */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg en Tailwind */
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Transición para efectos de hover si se añaden */
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 12rem; /* h-48 en Tailwind */
+    object-fit: cover;
+    border-radius: 0.375rem; /* rounded-md en Tailwind */
+    margin-bottom: 1rem;
+}
+
+.carousel-slide h3 {
+    font-size: 1.25rem; /* text-xl en Tailwind */
+    font-weight: 600; /* font-semibold en Tailwind */
+    color: var(--color-deep-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.carousel-slide p {
+    color: var(--color-deep-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.carousel-slide .text-dark-gold {
+    font-weight: 700; /* font-bold en Tailwind */
+}
+
+/* Estilos para los botones de navegación del carrusel */
+#carousel-prev, #carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.7); /* Ligeramente transparente */
+    padding: 0.75rem; /* Más grandes para móviles */
+    border-radius: 9999px; /* Completamente redondo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.2s;
+    border: none; /* Eliminar borde por defecto del botón */
+    cursor: pointer;
+    /* Icono dentro del botón (puedes usar SVG o font icon) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Tamaño del icono */
+    color: var(--color-deep-charcoal); /* Color del icono */
+}
+
+#carousel-prev:hover, #carousel-next:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#carousel-prev { left: 0.5rem; } /* Más cerca del borde para hacer espacio */
+#carousel-next { right: 0.5rem; } /* Más cerca del borde para hacer espacio */
+
+/* Puntos de navegación del carrusel */
+#carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+#carousel-dots button {
+    width: 0.75rem; /* Más grandes */
+    height: 0.75rem; /* Más grandes */
+    border-radius: 9999px; /* Completamente redondo */
+    background-color: var(--color-dark-gold);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    border: none; /* Eliminar borde por defecto del botón */
+    cursor: pointer;
+}
+
+#carousel-dots button.opacity-100 { /* Clase para el punto activo */
+    opacity: 1;
+}
+
+
+/* Estilos para la sección de Biografía y Pensamiento */
+.section-content {
+    background-color: var(--color-light-gray);
+    padding: 4rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Estilos para la cuadrícula de contenido filtrable */
+#content-grid {
+    display: grid;
+    gap: 1.5rem; /* Espacio entre los elementos de la cuadrícula */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+}
+
+.content-item {
+    background-color: var(--color-soft-cream);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden; /* Para que la imagen no se salga */
+    transition: transform 0.2s ease-in-out;
+}
+
+.content-item:hover {
+    transform: translateY(-5px); /* Efecto hover sutil */
+}
+
+.content-item img {
+    width: 100%;
+    height: 12rem; /* Altura fija para las imágenes del contenido */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.content-item-body {
+    padding: 1rem;
+}
+
+.content-item-body h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-deep-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.content-item-body p {
+    font-size: 0.875rem;
+    color: var(--color-deep-charcoal);
+    margin-bottom: 1rem;
+}
+
+.content-item-body .text-dark-gold {
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+/* Estilos para el FOOTER */
+footer {
+    background-color: var(--color-deep-charcoal);
+    color: var(--color-soft-cream);
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+footer a {
+    color: var(--color-dark-gold);
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: var(--color-soft-cream);
+}
+
+/* Estilos de botones generales */
+.button-primary,
+.button-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.button-primary {
+    background-color: var(--color-dark-gold);
+    color: var(--color-deep-charcoal);
+    border: none;
+}
+
+.button-primary:hover {
+    background-color: var(--color-muted-gold);
+}
+
+.button-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-dark-gold);
+    color: var(--color-dark-gold);
+}
+
+.button-secondary:hover {
+    background-color: var(--color-dark-gold);
+    color: var(--color-soft-cream);
+}
+
+
+/* Estilos para el menú móvil */
+#mobile-menu {
+    transition: transform 0.3s ease-out;
+    transform: translateX(100%); /* Oculto por defecto */
+}
+
+#mobile-menu.active {
+    transform: translateX(0); /* Visible */
+}
+
+/* Media Queries para responsividad */
+@media (min-width: 768px) {
+    /* Ajustes generales de layout para pantallas medianas */
+    .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .md\:gap-8 { gap: 2rem; }
+    .md\:items-center { align-items: center; }
+    .md\:text-left { text-align: left; }
+    .md\:order-first { order: -1; } /* Para reordenar elementos en grid */
+    .md\:ml-auto { margin-left: auto; }
+    .md\:mr-auto { margin-right: auto; }
+
+    /* Ajuste para el carrusel en pantallas medianas */
+    #carousel-track {
+        /* Permite ver parcialmente los slides contiguos para un efecto de "encapsulado" */
+        padding-left: 4rem; /* Más padding a la izquierda para el efecto */
+        padding-right: 4rem; /* Más padding a la derecha */
+        justify-content: flex-start; /* Asegura que el contenido inicie desde la izquierda */
+        overflow-x: hidden; /* Oculta la barra de desplazamiento visual */
+    }
+
+    .carousel-slide {
+        /* Muestra 2 slides por vista, con 2rem de margen entre ellos y en los bordes */
+        flex: 0 0 calc(50% - 2rem); 
+        margin: 0 1rem; /* Margen de 1rem a cada lado del slide (total 2rem entre slides) */
+        max-width: none; /* Elimina el max-w-xs para que el flexbox controle el ancho */
+    }
+
+    #carousel-prev { left: 1rem; } /* Vuelve a separarlos un poco del borde */
+    #carousel-next { right: 1rem; }
+}
+
+@media (min-width: 1024px) {
+    /* Ajustes generales de layout para pantallas grandes */
+    .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .lg\:gap-12 { gap: 3rem; }
+
+    /* Ajuste para el carrusel en pantallas grandes */
+    #carousel-track {
+        padding-left: 8rem; /* Más padding a la izquierda para un efecto más pronunciado */
+        padding-right: 8rem; /* Más padding a la derecha */
+    }
+    .carousel-slide {
+        /* Muestra 3 slides por vista, con un margen de 2rem entre ellos */
+        flex: 0 0 calc(33.333% - 2rem); 
+        margin: 0 1rem; /* Margen de 1rem a cada lado (total 2rem entre slides) */
+    }
+    #carousel-prev { left: 2rem; }
+    #carousel-next { right: 2rem; }
+}
+
+@media (min-width: 1280px) {
+    /* Ajuste para pantallas muy grandes (si se desea mostrar más slides) */
+    #carousel-track {
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+    .carousel-slide {
+        flex: 0 0 calc(25% - 2rem); /* Muestra 4 slides */
+        margin: 0 1rem;
+    }
+}
