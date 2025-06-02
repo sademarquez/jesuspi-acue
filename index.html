@@ -2,160 +2,32 @@
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural</title>
     <meta name="description" content="Explore la vida, el legado y el pensamiento de Jesús Piñacué Achicué, líder del pueblo Nasa, político y defensor de la equidad y el desarrollo intercultural en Colombia.">
     <meta name="keywords" content="Jesús Piñacué Achicué, líder indígena, Nasa, Colombia, político, interculturalidad, derechos indígenas, asesoría jurídica, Cauca, Popayán">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jesuspinacue.netlify.app/"> <meta property="og:title" content="Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural">
+    <meta property="og:url" content="https://www.tudominio.com/">
+    <meta property="og:title" content="Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural">
     <meta property="og:description" content="Explore la vida, el legado y el pensamiento de Jesús Piñacué Achicué, líder del pueblo Nasa, político y defensor de la equidad y el desarrollo intercultural en Colombia.">
-    <meta property="og:image" content="https://jesuspinacue.netlify.app/images/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jesuspinacue.netlify.app/"> <meta property="twitter:title" content="Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural">
+    <meta property="og:image" content="https://www.tudominio.com/images/og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.tudominio.com/">
+    <meta property="twitter:title" content="Jesús Piñacué Achicué | Líder Indígena y Voz Intercultural">
     <meta property="twitter:description" content="Explore la vida, el legado y el pensamiento de Jesús Piñacué Achicué, líder del pueblo Nasa, político y defensor de la equidad y el desarrollo intercultural en Colombia.">
-    <meta property="twitter:image" content="https://jesuspinacue.netlify.app/images/twitter-image.jpg"> <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta property="twitter:image" content="https://www.tudominio.com/images/twitter-image.jpg">
+
+    <link rel="icon" href="images/favicon.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <link rel="preload" href="styles.css" as="style">
     <link href="main.min.css" rel="stylesheet">
-
-
-    <script src="main.min.js"></script>
 </head>
-<body class="bg-soft-cream text-deep-charcoal font-inter">
-   <header id="main-header" class="fixed top-0 left-0 w-full z-40 bg-soft-cream/95 shadow-lg py-4 transition-all duration-300">
-    <div class="container mx-auto flex justify-between items-center px-4 md:px-6">
-        <a href="#hero" class="text-2xl font-bold text-deep-charcoal flex items-center group">
-        <class="h-10 mr-2 transform transition-transform duration-300 group-hover:scale-105">
-            Jesús Piñacué
-        </a>
-
-        <nav class="hidden md:flex space-x-6">
-            <a href="#hero" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Inicio</a>
-            <a href="#biografia" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Biografía</a>
-            <a href="#trayectoria" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Trayectoria</a>
-            <a href="#pensamiento-accion" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Pensamiento y Acción</a>
-            <a href="#contacto" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Contacto</a>
-        </nav>
-
-        <div id="mobile-menu-button" class="md:hidden p-2 text-deep-charcoal focus:outline-none cursor-pointer" aria-label="Menú de navegación móvil" aria-expanded="false" aria-controls="mobile-menu">
-            <svg class="w-8 h-8 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-            <svg class="w-8 h-8 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </div>
-    </div>
-
-    <div id="mobile-menu" class="fixed top-0 right-0 w-full h-screen bg-deep-charcoal text-soft-cream p-12 z-50 flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 md:relative md:w-auto md:h-auto md:bg-transparent md:p-0 md:flex md:flex-row md:space-x-4 md:transform-none">
-        <nav class="flex flex-col items-center space-y-4">
-            <a href="#hero" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="hero">Inicio</a>
-            <a href="#biografia" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="biografia">Biografía</a>
-            <a href="#trayectoria" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="trayectoria">Trayectoria</a>
-            <a href="#pensamiento-accion" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="pensamiento-accion">Pensamiento y Acción</a>
-            <a href="#contacto" class="nav-link text-xl md:text-base py-4 md:py-0 hover:text-dark-gold transition-colors duration-200" data-section="contacto">Contacto</a>
-        </nav>
-    </div>
-</header>
-
-    <main>
-        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white section-animated">
-            <div class="absolute inset-0 bg-dark-charcoal opacity-60"></div>
-            <div class="relative z-10 text-center px-6">
-                <h1 class="text-4xl md:text-6xl font-bold text-shadow animate-fade-in-up">Jesús Piñacué Achicué</h1>
-                <p class="mt-4 text-xl md:text-2xl text-shadow animate-fade-in-up delay-200">Líder Indígena, Político y Defensor Intercultural.</p>
-                <a href="#biografia" class="mt-8 inline-block bg-dark-gold text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-muted-gold transition-all duration-300 animate-fade-in-up delay-400">Conoce Más</a>
-            </div>
-        </section>
-        <section id="biografia" class="py-20 px-6 bg-soft-cream text-deep-charcoal section-animated">
-            <div class="container mx-auto max-w-4xl text-center">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="md:order-2">
-                        <img src="images/biografia-img.jpg" alt="Jesús Piñacué Achicué en su juventud, líder indígena Nasa" class="rounded-lg shadow-lg w-full h-auto" loading="lazy">
-                    </div>
-                    <div class="md:order-1 text-left">
-                        <h2 class="text-4xl font-bold text-dark-gold mb-6">Biografía</h2>
-                        <p class="text-lg leading-relaxed mb-4">Jesús Piñacué Achicué es un líder indígena del pueblo Nasa, reconocido por su incansable labor en la defensa de los derechos de las comunidades indígenas y la promoción de la interculturalidad en Colombia. Nacido en el Cauca, su vida ha estado marcada por un profundo compromiso con el bienestar de su gente y la construcción de un país más justo y equitativo.</p>
-                        <p class="text-lg leading-relaxed mb-4">Desde muy joven, Jesús Piñacué demostró una vocación innata para el liderazgo. Su trayectoria ha incluido roles cruciales en la política nacional, donde ha sido una voz influyente en la formulación de políticas públicas que buscan el reconocimiento y la protección de los pueblos originarios. Además de su destacada carrera política, ha sido un activo asesor jurídico, trabajando incansablemente para garantizar el respeto de los derechos territoriales y culturales de su comunidad.</p>
-                        <p class="text-lg leading-relaxed">Su pensamiento se centra en la armonización de las cosmovisiones ancestrales con los desafíos del mundo contemporáneo, promoviendo un desarrollo sostenible que respete el equilibrio natural y la sabiduría de sus antepasados. Jesús Piñacué Achicué es un puente entre culturas, un defensor incansable de la diversidad y un constructor de paz en un país que tanto la necesita.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="trayectoria" class="py-20 px-6 bg-light-gray text-deep-charcoal section-animated">
-            <div class="container mx-auto text-center">
-                <h2 class="text-4xl font-bold text-dark-gold mb-12">Trayectoria y Legado</h2>
-                <div id="carousel-container" class="relative w-full max-w-5xl mx-auto overflow-hidden">
-                    <div id="carousel-track" class="flex transition-transform ease-in-out duration-300 snap-x snap-mandatory">
-                        </div>
-                    <button id="carousel-prev" class="absolute left-0 top-1/2 -translate-y-1/2 bg-deep-charcoal text-soft-cream p-3 rounded-full shadow-lg hover:bg-dark-gold transition-colors duration-200 z-10 hidden md:block">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </button>
-                    <button id="carousel-next" class="absolute right-0 top-1/2 -translate-y-1/2 bg-deep-charcoal text-soft-cream p-3 rounded-full shadow-lg hover:bg-dark-gold transition-colors duration-200 z-10 hidden md:block">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    <div id="carousel-dots" class="flex justify-center space-x-3 mt-6">
-                        </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pensamiento-accion" class="py-20 px-6 bg-soft-cream text-deep-charcoal section-animated">
-            <div class="container mx-auto text-center">
-                <h2 class="text-4xl font-bold text-dark-gold mb-12">Pensamiento y Acción</h2>
-                <div class="flex justify-center space-x-4 mb-8">
-                    <button class="filter-btn px-6 py-2 rounded-full bg-dark-gold text-white font-semibold hover:bg-deep-charcoal transition-colors duration-200" data-filter="todos">Todos</button>
-                    <button class="filter-btn px-6 py-2 rounded-full bg-light-gray text-deep-charcoal font-semibold hover:bg-dark-gold hover:text-white transition-colors duration-200" data-filter="escrito">Escritos</button>
-                    <button class="filter-btn px-6 py-2 rounded-full bg-light-gray text-deep-charcoal font-semibold hover:bg-dark-gold hover:text-white transition-colors duration-200" data-filter="charla">Charlas</button>
-                    <button class="filter-btn px-6 py-2 rounded-full bg-light-gray text-deep-charcoal font-semibold hover:bg-dark-gold hover:text-white transition-colors duration-200" data-filter="foro">Foros</button>
-                </div>
-                <div id="content-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="py-20 px-6 bg-deep-charcoal text-soft-cream section-animated">
-            <div class="container mx-auto text-center max-w-2xl">
-                <h2 class="text-4xl font-bold text-dark-gold mb-8">Contacto</h2>
-                <p class="text-lg mb-8">Si deseas conocer más sobre mi trabajo, invitarme a un evento o colaborar en proyectos que promuevan la interculturalidad y los derechos indígenas, no dudes en contactarme.</p>
-                <div class="space-y-4">
-                    <a href="mailto:contacto@jesuspinacue.com" class="block bg-dark-gold text-deep-charcoal px-6 py-3 rounded-full text-lg font-semibold hover:bg-muted-gold transition-colors duration-200 flex items-center justify-center">
-                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26c.49.33 1.11.33 1.6 0L21 8m-18 0a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"></path></svg>
-                        contacto@jesuspinacue.com
-                    </a>
-                    <a href="tel:+573101234567" class="block bg-dark-gold text-deep-charcoal px-6 py-3 rounded-full text-lg font-semibold hover:bg-muted-gold transition-colors duration-200 flex items-center justify-center">
-                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.293l1.146 1.147a2 2 0 010 2.828l-1.146 1.147L11 9.707l1.146 1.146a2 2 0 012.828 0l1.146-1.146L21 13.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
-                        +57 310 123 4567
-                    </a>
-                </div>
-                <div class="flex justify-center space-x-6 mt-8">
-                    <a href="https://www.facebook.com/tuusuario" target="_blank" rel="noopener noreferrer" class="text-soft-cream hover:text-dark-gold transition-colors duration-200">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-2v2h2v2h-2v6h-3v-6h-2v-2h2v-2c0-1.66 1.34-3 3-3h3v4z"></path></svg>
-                    </a>
-                    <a href="https://twitter.com/tuusuario" target="_blank" rel="noopener noreferrer" class="text-soft-cream hover:text-dark-gold transition-colors duration-200">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.46 6c-.77.34-1.6.56-2.47.67.88-.53 1.56-1.37 1.88-2.37-.83.49-1.75.85-2.72 1.05-.78-.83-1.89-1.35-3.13-1.35-2.37 0-4.3 1.93-4.3 4.3 0 .34.04.67.11.98-3.57-.18-6.73-1.89-8.85-4.48-.37.64-.58 1.38-.58 2.18 0 1.49.76 2.82 1.91 3.59-.7-.02-1.3-.22-1.87-.52v.05c0 2.09 1.48 3.84 3.44 4.23-.36.1-.74.15-1.13.15-.28 0-.55-.03-.81-.08.55 1.7 2.14 2.94 4.02 2.98-1.47 1.15-3.32 1.84-5.32 1.84-.34 0-.68-.02-1.01-.06C3.9 20.1 6.35 20.9 9 20.9c10.23 0 15.8-8.46 15.8-15.8 0-.24-.01-.48-.02-.72.97-.7 1.81-1.57 2.47-2.56z"></path></svg>
-                    </a>
-                    <a href="https://www.instagram.com/tuusuario" target="_blank" rel="noopener noreferrer" class="text-soft-cream hover:text-dark-gold transition-colors duration-200">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2.2V7.8c0 .4-.3.8-.8.8s-.8-.3-.8-.8V4.2h1.6zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6.4 0c-.86 0-1.6.74-1.6 1.6s.74 1.6 1.6 1.6 1.6-.74 1.6-1.6-.74-1.6-1.6-1.6zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"></path></svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-deep-charcoal text-soft-cream py-8 text-center text-sm">
-        <div class="container mx-auto px-6">
-            <p>&copy; 2023 Jesús Piñacué Achicué. Todos los derechos reservados.</p>
-            <p class="mt-2">Diseñado con ❤️ para la comunidad.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<body>
+    <script src="main.min.js"></script>
 </body>
 </html>
