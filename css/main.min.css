@@ -337,20 +337,16 @@ footer a:hover {
     color: var(--color-soft-cream);
     padding: 6rem 1rem 1rem;
     z-index: 50;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transform: translateX(100%); /* Oculto por defecto (fuera de la pantalla) */
-    transition: transform 0.3s ease-out, visibility 0.3s ease-out, opacity 0.3s ease-out; /* Transición suave al aparecer/desaparecer */
-    visibility: hidden; /* Ocultar completamente cuando no está activo */
-    opacity: 0; /* Efecto de desvanecimiento */
+    transition: transform 0.3s ease-out; /* Solo transicionar transform, display lo maneja JS */
+    display: none; /* Inicia oculto, JS lo hace flex */
 }
 
 #mobile-menu.active {
     transform: translateX(0); /* Visible (se desliza hacia la pantalla) */
-    visibility: visible; /* Hacerlo visible */
-    opacity: 1; /* Hacerlo opaco */
 }
 
 /* Ocultar el botón del menú burger y mostrar la navegación normal en pantallas grandes */
@@ -368,8 +364,6 @@ footer a:hover {
         padding: 0;
         z-index: auto;
         flex-direction: row;
-        display: flex; /* Siempre mostrar como flex en escritorio */
-        visibility: visible; /* Siempre visible en escritorio */
-        opacity: 1; /* Siempre opaco en escritorio */
+        display: flex !important; /* Forzar display flex en desktop, independientemente del JS */
     }
 }
