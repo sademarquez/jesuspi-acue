@@ -22,12 +22,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="main.min.css">
 </head>
 <body>
     <header id="main-header" class="bg-soft-cream text-deep-charcoal p-4 shadow-md fixed w-full top-0 left-0 z-40">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Jesús Piñacué Achicué</a>
+            <a href="#hero" class="text-2xl font-bold text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Jesús Piñacué Achicué</a>
 
             <nav id="desktop-nav" class="hidden md:flex space-x-6">
                 <a href="#trayectoria-section" class="nav-link text-deep-charcoal hover:text-dark-gold transition-colors duration-200">Trayectoria</a>
@@ -43,8 +44,13 @@
             </button>
         </div>
 
-        <div id="mobile-menu">
-            <nav class="flex flex-col items-center space-y-4 pt-8">
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-deep-charcoal z-50 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out transform translate-x-full">
+            <button id="close-mobile-menu-button" class="absolute top-4 right-4 text-soft-cream focus:outline-none focus:ring-2 focus:ring-dark-gold">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <nav class="flex flex-col items-center space-y-4 pt-16">
                 <a href="#trayectoria-section" class="nav-link text-soft-cream hover:text-dark-gold transition-colors duration-200 text-lg">Trayectoria</a>
                 <a href="#pensamiento" class="nav-link text-soft-cream hover:text-dark-gold transition-colors duration-200 text-lg">Pensamiento y Acción</a>
                 <a href="#biografia" class="nav-link text-soft-cream hover:text-dark-gold transition-colors duration-200 text-lg">Biografía</a>
