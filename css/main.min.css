@@ -61,13 +61,19 @@ body {
 }
 
 /* Estilos de la línea de tiempo */
+.timeline-item {
+    position: relative;
+    /* Ajusta padding para que el contenido no quede pegado al "timeline-dot" en móvil */
+    padding-left: 2rem; 
+}
+
 .timeline-item::before {
     content: '';
     position: absolute;
-    top: 1rem; /* Ajuste para centrar el círculo */
-    left: calc(50% - 10px); /* Centra el círculo en la línea vertical para desktop */
-    width: 20px;
-    height: 20px;
+    top: 1.5rem; /* Ajuste para centrar el círculo en el contenido */
+    left: 0.625rem; /* Posiciona el círculo a la izquierda */
+    width: 16px; /* Tamaño del círculo */
+    height: 16px;
     border-radius: 50%;
     background-color: var(--color-dark-gold); /* Muted Gold */
     border: 3px solid var(--color-soft-cream); /* Soft Cream */
@@ -75,34 +81,75 @@ body {
     z-index: 10; /* Asegura que el círculo esté por encima de la línea */
 }
 
-/* Ajuste para dispositivos móviles: la línea de tiempo es solo en el lado izquierdo */
-@media (max-width: 767px) { /* Tailwind's 'md' breakpoint */
-    .timeline-item::before {
-        left: 0.625rem; /* Ajusta la posición del círculo al inicio del ítem */
-        top: 1rem; /* Mantén la misma posición vertical */
-    }
-    /* Añade una línea vertical izquierda en móvil */
+/* Línea vertical para la línea de tiempo en móvil */
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 1.5rem; /* Empieza donde el círculo */
+    left: 14px; /* Centra la línea con el círculo */
+    width: 2px; /* Grosor de la línea */
+    height: calc(100% - 1.5rem); /* Se extiende hasta el final del item */
+    background-color: var(--color-dark-gold);
+    z-index: 5;
+}
+
+/* Ajuste para desktop: la línea de tiempo es central */
+@media (min-width: 768px) { /* Tailwind's 'md' breakpoint */
     .timeline-item {
-        border-left: 3px solid var(--color-dark-gold); /* Simula la línea */
-        padding-left: 2rem; /* Espacio para el círculo y la línea */
+        padding-left: 0; /* Remover padding-left de móvil */
+        display: flex;
+        align-items: center;
+    }
+
+    .timeline-item:nth-child(odd) { /* Items impares a la izquierda */
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+
+    .timeline-item:nth-child(even) { /* Items pares a la derecha */
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .timeline-item::before {
+        left: calc(50% - 10px); /* Centra el círculo en la línea vertical principal */
+        top: 50%; /* Centra verticalmente */
+        transform: translateY(-50%); /* Ajuste de centrado */
+        width: 20px; /* Tamaño del círculo en desktop */
+        height: 20px;
+    }
+
+    .timeline-item:not(:last-child)::after {
+        content: none; /* Elimina la línea vertical móvil */
     }
 }
 
 
 /* Estilos para las tarjetas de contenido */
 .content-card {
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(15px); /* Reducir el desplazamiento inicial */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out, box-shadow 0.3s ease; /* Reducir duración */
 }
 .content-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el ratón */
 }
 
+/* Cuando la sección padre (.pensamiento-accion) es visible, sus hijos se animan */
+/* Esto se maneja con el Intersection Observer en JS */
+#pensamiento-accion.visible .content-card {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: var(--delay); /* Usaremos una variable CSS para el delay */
+}
+
+
 /* Animaciones para las secciones */
 .section-animated {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(15px); /* Movimiento más sutil */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Velocidad de aparición muy rápida */
 }
 .section-animated.visible {
     opacity: 1;
@@ -111,7 +158,7 @@ body {
 
 /* Animaciones de entrada inicial para el hero */
 .animate-fade-in-up {
-    animation: fadeInUp 1s ease-out forwards;
+    animation: fadeInUp 0.8s ease-out forwards; /* Más rápido */
     opacity: 0; /* Asegura que inicie oculto */
 }
 
@@ -121,7 +168,7 @@ body {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(15px); /* Movimiento más sutil */
     }
     to {
         opacity: 1;
@@ -133,4 +180,75 @@ body {
 .filter-btn.active {
     background-color: var(--color-dark-gold);
     color: white;
+}
+/* Asegurarse que los botones no activos mantengan su color de fondo */
+.filter-btn:not(.active) {
+    background-color: var(--color-deep-charcoal);
+}
+
+/* Estilos para el carrusel en trayectoria */
+#carousel-track {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Curva de velocidad más suave */
+    height: 96; /* Altura fija para el carrusel */
+    overflow: hidden; /* Asegura que los slides ocultos no se vean */
+    position: relative; /* Necesario para posicionar los botones */
+}
+
+#carousel-track > div {
+    flex: 0 0 100%; /* Cada slide ocupa el 100% del ancho */
+}
+
+/* Estilos para los botones de navegación del carrusel */
+#carousel-prev, #carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.7); /* Ligeramente transparente */
+    padding: 0.75rem; /* Más grandes para móviles */
+    border-radius: 9999px; /* Completamente redondo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.2s;
+}
+
+#carousel-prev:hover, #carousel-next:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#carousel-prev { left: 1rem; }
+#carousel-next { right: 1rem; }
+
+/* Puntos de navegación del carrusel */
+#carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+#carousel-dots button {
+    width: 0.75rem; /* Más grandes */
+    height: 0.75rem; /* Más grandes */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+#carousel-dots button.active-dot { /* Nueva clase para el punto activo */
+    background-color: var(--color-dark-gold); /* Color dorado para el activo */
+    width: 1rem; /* Ligeramente más grande */
+    height: 1rem;
+}
+
+@media (max-width: 768px) {
+    #carousel-prev, #carousel-next {
+        padding: 0.5rem; /* Ajuste para pantallas más pequeñas */
+    }
 }
