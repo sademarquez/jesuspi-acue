@@ -1,0 +1,136 @@
+/* Variables CSS para una gestión de colores más sencilla y consistente */
+:root {
+    --color-soft-cream: #FBF8F0; /* Soft Cream */
+    --color-deep-charcoal: #4A4441; /* Deep Charcoal */
+    --color-dark-gold: #D4AF37; /* Muted Gold */
+    --color-muted-gold: #E0DCD4; /* Lighter Gold for backgrounds/hover */
+    --color-light-gray: #f8f8f8; /* Un gris claro para secciones de fondo */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-soft-cream);
+    color: var(--color-deep-charcoal);
+    line-height: 1.6; /* Mejora la legibilidad */
+}
+
+/* Clases de Tailwind redefinidas para usar variables CSS (si compilas Tailwind) */
+/* Si no compilas Tailwind, estas clases no son necesarias aquí, ya las maneja Tailwind */
+.bg-soft-cream { background-color: var(--color-soft-cream); }
+.text-deep-charcoal { color: var(--color-deep-charcoal); }
+.text-dark-gold { color: var(--color-dark-gold); }
+.bg-dark-gold { background-color: var(--color-dark-gold); }
+.hover\:bg-muted-gold:hover { background-color: var(--color-muted-gold); }
+.bg-light-gray { background-color: var(--color-light-gray); }
+
+/* Efecto de sombra para texto en banners/imágenes */
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Estilos para los enlaces de navegación */
+.nav-link.active {
+    color: var(--color-dark-gold);
+    font-weight: 600;
+    position: relative;
+}
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-dark-gold);
+    transform: scaleX(1);
+    transition: transform 0.3s ease-out;
+}
+.nav-link:not(.active)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-dark-gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+}
+.nav-link:not(.active):hover::after {
+    transform: scaleX(1);
+}
+
+/* Estilos de la línea de tiempo */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 1rem; /* Ajuste para centrar el círculo */
+    left: calc(50% - 10px); /* Centra el círculo en la línea vertical para desktop */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--color-dark-gold); /* Muted Gold */
+    border: 3px solid var(--color-soft-cream); /* Soft Cream */
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3); /* Subtle glow */
+    z-index: 10; /* Asegura que el círculo esté por encima de la línea */
+}
+
+/* Ajuste para dispositivos móviles: la línea de tiempo es solo en el lado izquierdo */
+@media (max-width: 767px) { /* Tailwind's 'md' breakpoint */
+    .timeline-item::before {
+        left: 0.625rem; /* Ajusta la posición del círculo al inicio del ítem */
+        top: 1rem; /* Mantén la misma posición vertical */
+    }
+    /* Añade una línea vertical izquierda en móvil */
+    .timeline-item {
+        border-left: 3px solid var(--color-dark-gold); /* Simula la línea */
+        padding-left: 2rem; /* Espacio para el círculo y la línea */
+    }
+}
+
+
+/* Estilos para las tarjetas de contenido */
+.content-card {
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, box-shadow 0.3s ease;
+}
+.content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el ratón */
+}
+
+/* Animaciones para las secciones */
+.section-animated {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.section-animated.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animaciones de entrada inicial para el hero */
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0; /* Asegura que inicie oculto */
+}
+
+.animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
+.animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Filtros de contenido activos */
+.filter-btn.active {
+    background-color: var(--color-dark-gold);
+    color: white;
+}
