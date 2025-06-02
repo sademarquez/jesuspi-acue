@@ -335,17 +335,14 @@ footer a:hover {
     height: 100vh;
     background-color: var(--color-deep-charcoal);
     color: var(--color-soft-cream);
-    padding: 6rem 1rem 1rem; /* Padding superior para el header y el resto */
-    z-index: 50; /* Alto z-index para que esté encima de todo */
+    padding: 6rem 1rem 1rem;
+    z-index: 50;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transform: translateX(100%); /* Oculto por defecto (fuera de la pantalla) */
     transition: transform 0.3s ease-out; /* Transición suave al aparecer/desaparecer */
-
-    /* Ocultar visualmente por defecto en pantallas grandes, pero permitir que el JS lo manipule en móviles */
-    /* Este display:none se manejará en la media query para desktop */
 }
 
 #mobile-menu.active {
@@ -354,7 +351,7 @@ footer a:hover {
 
 #mobile-menu a {
     color: var(--color-soft-cream);
-    font-size: 1.5rem; /* Tamaño de texto más grande para móviles */
+    font-size: 1.5rem;
     padding: 1rem 0;
     display: block;
     width: 100%;
@@ -367,22 +364,21 @@ footer a:hover {
     color: var(--color-dark-gold);
 }
 
-/* Ocultar el menú burger y mostrar la navegación normal en pantallas grandes */
+/* Ocultar el botón del menú burger y mostrar la navegación normal en pantallas grandes */
 @media (min-width: 768px) {
     #mobile-menu-button {
         display: none; /* Oculta el botón del menú burger en desktop */
     }
-    /* Restaura el menú para que se vea como navegación de escritorio */
     #mobile-menu {
-        position: static; /* No es fijo */
-        transform: translateX(0); /* Sin transformación */
-        width: auto; /* Ancho automático */
-        height: auto; /* Altura automática */
-        background-color: transparent; /* Fondo transparente */
-        color: inherit; /* Color de texto normal */
-        padding: 0; /* Sin padding */
-        z-index: auto; /* Z-index automático */
-        flex-direction: row; /* Vuelve a ser una fila */
-        display: flex !important; /* Asegura que esté visible en desktop, anula cualquier hidden */
+        position: static;
+        transform: translateX(0);
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        color: inherit;
+        padding: 0;
+        z-index: auto;
+        flex-direction: row;
+        display: flex !important; /* Asegura que esté visible en desktop */
     }
 }
