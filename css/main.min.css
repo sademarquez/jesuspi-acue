@@ -208,13 +208,13 @@ header nav .nav-link:hover {
     display: flex;
     overflow-x: hidden; /* Hide scrollbar, JS handles movement */
     scroll-behavior: smooth;
-    padding-bottom: 2rem;
-    /* No padding-left/right here, let slides handle it */
+    padding: 0 1rem; /* Padding for the track to show partial next/prev slides */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .carousel-slide {
     flex-shrink: 0;
-    width: 100%; /* Default to full width on mobile */
+    box-sizing: border-box; /* Crucial: padding and border included in width */
     height: 100%; /* Take full height of track */
     position: relative; /* For content overlay */
     border-radius: 0.5rem;
@@ -235,20 +235,24 @@ header nav .nav-link:hover {
 }
 
 /* Responsive adjustments for Trayectoria carousel */
-@media (min-width: 768px) { /* md breakpoint */
-    #carousel-track {
-        padding: 0 2rem; /* Add padding to track on larger screens */
-    }
+@media (max-width: 767px) { /* Mobile */
     .carousel-slide {
-        width: calc(50% - 1.5rem); /* Show 2 slides, with 1.5rem gap */
-        margin: 0 0.75rem; /* Half gap on each side */
+        width: calc(100% - 2rem); /* Full width minus total margin */
+        margin: 0 1rem; /* 1rem margin on each side */
+    }
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+    .carousel-slide {
+        width: calc(50% - 2rem); /* Show 2 slides, with 2rem total margin */
+        margin: 0 1rem; /* 1rem margin on each side */
     }
 }
 
 @media (min-width: 1024px) { /* lg breakpoint */
     .carousel-slide {
-        width: calc(33.333% - 1.5rem); /* Show 3 slides, with 1.5rem gap */
-        margin: 0 0.75rem;
+        width: calc(33.333% - 2rem); /* Show 3 slides, with 2rem total margin */
+        margin: 0 1rem;
     }
 }
 
@@ -316,15 +320,14 @@ header nav .nav-link:hover {
     display: flex;
     overflow-x: hidden; /* Hide scrollbar, JS handles movement */
     scroll-behavior: smooth;
-    padding: 0 2rem; /* Padding for the track to show partial next/prev slides */
+    padding: 0 1rem; /* Padding for the track to show partial next/prev slides */
     box-sizing: border-box;
 }
 
 .content-carousel-slide {
     flex-shrink: 0;
-    width: 100%; /* Default to full width on mobile */
+    box-sizing: border-box; /* Crucial: padding and border included in width */
     padding: 1rem; /* Padding around the content item */
-    box-sizing: border-box;
     transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
 }
 
@@ -372,16 +375,23 @@ header nav .nav-link:hover {
 }
 
 /* Responsive adjustments for Pensamiento y Acción carousel */
+@media (max-width: 767px) { /* Mobile */
+    .content-carousel-slide {
+        width: calc(100% - 2rem); /* Full width minus total margin */
+        margin: 0 1rem; /* 1rem margin on each side */
+    }
+}
+
 @media (min-width: 768px) { /* md breakpoint */
     .content-carousel-slide {
-        width: calc(50% - 2rem); /* Show 2 slides with 2rem gap */
-        margin: 0 1rem; /* Half gap on each side */
+        width: calc(50% - 2rem); /* Show 2 slides with 2rem total margin */
+        margin: 0 1rem; /* 1rem margin on each side */
     }
 }
 
 @media (min-width: 1024px) { /* lg breakpoint */
     .content-carousel-slide {
-        width: calc(33.333% - 2rem); /* Show 3 slides with 2rem gap */
+        width: calc(33.333% - 2rem); /* Show 3 slides with 2rem total margin */
         margin: 0 1rem;
     }
 }
@@ -502,6 +512,7 @@ footer a:hover {
 }
 
 /* Estilos para la línea de tiempo (timeline) - Estáticos, si no se usan en JS */
+/* Se mantienen por si hay elementos estáticos en el HTML, pero el carrusel los reemplaza visualmente */
 .timeline-item {
     display: flex;
     align-items: center;
