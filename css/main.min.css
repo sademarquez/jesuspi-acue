@@ -342,26 +342,15 @@ footer a:hover {
     align-items: center;
     justify-content: center;
     transform: translateX(100%); /* Oculto por defecto (fuera de la pantalla) */
-    transition: transform 0.3s ease-out; /* Transición suave al aparecer/desaparecer */
+    transition: transform 0.3s ease-out, visibility 0.3s ease-out, opacity 0.3s ease-out; /* Transición suave al aparecer/desaparecer */
+    visibility: hidden; /* Ocultar completamente cuando no está activo */
+    opacity: 0; /* Efecto de desvanecimiento */
 }
 
 #mobile-menu.active {
     transform: translateX(0); /* Visible (se desliza hacia la pantalla) */
-}
-
-#mobile-menu a {
-    color: var(--color-soft-cream);
-    font-size: 1.5rem;
-    padding: 1rem 0;
-    display: block;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-#mobile-menu a:hover {
-    color: var(--color-dark-gold);
+    visibility: visible; /* Hacerlo visible */
+    opacity: 1; /* Hacerlo opaco */
 }
 
 /* Ocultar el botón del menú burger y mostrar la navegación normal en pantallas grandes */
@@ -371,7 +360,7 @@ footer a:hover {
     }
     #mobile-menu {
         position: static;
-        transform: translateX(0);
+        transform: translateX(0); /* Asegurarse de que esté en posición */
         width: auto;
         height: auto;
         background-color: transparent;
@@ -379,6 +368,8 @@ footer a:hover {
         padding: 0;
         z-index: auto;
         flex-direction: row;
-        display: flex !important; /* Asegura que esté visible en desktop */
+        display: flex; /* Siempre mostrar como flex en escritorio */
+        visibility: visible; /* Siempre visible en escritorio */
+        opacity: 1; /* Siempre opaco en escritorio */
     }
 }
