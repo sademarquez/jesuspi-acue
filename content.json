@@ -1,0 +1,44 @@
+[
+    {
+        "category": "escrito",
+        "title": "Reflexiones sobre la Ley de Origen",
+        "description": "Un análisis profundo sobre la importancia de la conexión ancestral con el territorio y su implicación en las políticas actuales.",
+        "image": "https://placehold.co/600x400/8C7851/FBF8F0?text=Escrito+1",
+        "link": "#"
+    },
+    {
+        "category": "charla",
+        "title": "Diálogos Interculturales para la Paz",
+        "description": "Presentación en el foro nacional sobre la necesidad de integrar las cosmovisiones indígenas en la construcción de una paz duradera.",
+        "image": "https://placehold.co/600x400/D4AF37/4A4441?text=Charla+1",
+        "link": "#"
+    },
+    {
+        "category": "foro",
+        "title": "Participación: El Futuro del Liderazgo",
+        "description": "Un espacio de debate abierto sobre los retos y oportunidades para las nuevas generaciones de líderes comunitarios en Colombia.",
+        "image": "https://placehold.co/600x400/4A4441/FBF8F0?text=Foro+1",
+        "link": "#"
+    },
+    {
+        "category": "escrito",
+        "title": "La Educación Propia como Resistencia",
+        "description": "Artículo sobre la autonomía educativa y su papel en la preservación de la identidad cultural y la lengua materna.",
+        "image": "https://placehold.co/600x400/8C7851/FBF8F0?text=Escrito+2",
+        "link": "#"
+    },
+    {
+        "category": "charla",
+        "title": "Economía y Territorio Ancestral",
+        "description": "Análisis de modelos económicos alternativos que respetan el equilibrio del territorio y promueven el buen vivir.",
+        "image": "https://placehold.co/600x400/D4AF37/4A4441?text=Charla+2",
+        "link": "#"
+    },
+    {
+        "category": "foro",
+        "title": "Justicia Ordinaria y Justicia Indígena",
+        "description": "Una reflexión sobre la necesaria coordinación y el respeto mutuo entre los sistemas de justicia para una verdadera pluralidad jurídica.",
+        "image": "https://placehold.co/600x400/4A4441/FBF8F0?text=Foro+2",
+        "link": "#"
+    }
+]
