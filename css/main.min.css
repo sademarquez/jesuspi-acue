@@ -328,12 +328,59 @@ footer a:hover {
 
 /* Estilos para el menú móvil */
 #mobile-menu {
-    transition: transform 0.3s ease-out;
-    transform: translateX(100%); /* Oculto por defecto */
+    position: fixed; /* O fixed si quieres que flote sobre el contenido */
+    top: 0; /* O la altura de tu header si es fijo y quieres que empiece debajo */
+    right: 0;
+    width: 100%; /* Cubre todo el ancho del móvil */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: var(--color-deep-charcoal); /* Fondo oscuro para el menú */
+    color: var(--color-soft-cream);
+    padding: 6rem 1rem 1rem; /* Padding superior para el header y el resto */
+    z-index: 50; /* Alto z-index para que esté encima de todo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%); /* Oculto por defecto (fuera de la pantalla) */
+    transition: transform 0.3s ease-out; /* Transición suave al aparecer/desaparecer */
 }
 
 #mobile-menu.active {
-    transform: translateX(0); /* Visible */
+    transform: translateX(0); /* Visible (se desliza hacia la pantalla) */
+}
+
+#mobile-menu a {
+    color: var(--color-soft-cream);
+    font-size: 1.5rem; /* Tamaño de texto más grande para móviles */
+    padding: 1rem 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#mobile-menu a:hover {
+    color: var(--color-dark-gold);
+}
+
+/* Ocultar el menú burger y mostrar la navegación normal en pantallas grandes */
+@media (min-width: 768px) {
+    #mobile-menu-button {
+        display: none; /* Oculta el botón del menú burger */
+    }
+    #mobile-menu {
+        /* Deshabilita los estilos del menú móvil para pantallas grandes */
+        position: static;
+        transform: translateX(0); /* Asegura que no haya transformación */
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        color: inherit;
+        padding: 0;
+        z-index: auto;
+        flex-direction: row; /* Vuelve a ser una fila */
+    }
 }
 
 /* Media Queries para responsividad */
